@@ -1,23 +1,23 @@
-\contentsline {section}{\numberline {1}Part 1 - Motion Control}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Understanding the basics}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Levels of Motion Control}{2}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}Motors, Wheels and Encoders}{2}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}Motor Controllers and Drivers}{3}{subsubsection.1.2.2}
-\contentsline {subsubsection}{\numberline {1.2.3}The ROS Base Controller}{3}{subsubsection.1.2.3}
-\contentsline {subsubsection}{\numberline {1.2.4}Frame-Base Motion using the move\_base ROS Package}{3}{subsubsection.1.2.4}
-\contentsline {subsubsection}{\numberline {1.2.5}SLAM using the gmapping and amcl ROS Packages}{3}{subsubsection.1.2.5}
-\contentsline {subsubsection}{\numberline {1.2.6}Semantic Goals}{3}{subsubsection.1.2.6}
-\contentsline {subsection}{\numberline {1.3}Setting up the Network}{3}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Testing with the fake and the real Turtlebot}{4}{subsection.1.4}
-\contentsline {subsection}{\numberline {1.5}Testing a node - Turtlebot Follower}{4}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Testing a node - Auto Docking}{4}{subsection.1.6}
-\contentsline {subsection}{\numberline {1.7}Goal 1 Basic Motion of Mobile Base}{4}{subsection.1.7}
-\contentsline {subsubsection}{\numberline {1.7.1}From command prompt}{4}{subsubsection.1.7.1}
-\contentsline {subsubsection}{\numberline {1.7.2}By using a node}{5}{subsubsection.1.7.2}
-\contentsline {subsection}{\numberline {1.8}Goal 2 = Advanced Motion of Mobile Base}{5}{subsection.1.8}
-\contentsline {subsubsection}{\numberline {1.8.1}Dead Reckoning}{6}{subsubsection.1.8.1}
-\contentsline {subsection}{\numberline {1.9}Goal 3 = Navigating a Square using Twist+Odometry}{6}{subsection.1.9}
-\contentsline {subsection}{\numberline {1.10}Goal 4 = Navigation with Path Planning move\_base}{7}{subsection.1.10}
-\contentsline {section}{\numberline {2}Part 2 - Planar Laser RangeFinder}{8}{section.2}
-\contentsline {section}{\numberline {3}Part 3 - Navigation $\&$ Localization}{8}{section.3}
-\contentsline {section}{\numberline {4}Part 4 - Controlling with Android}{8}{section.4}
+\contentsline {section}{\numberline {1}Part 1 - Motion Control}{2}
+\contentsline {subsection}{\numberline {1.1}Understanding the basics}{2}
+\contentsline {subsection}{\numberline {1.2}Levels of Motion Control}{2}
+\contentsline {subsubsection}{\numberline {1.2.1}Motors, Wheels and Encoders}{2}
+\contentsline {subsubsection}{\numberline {1.2.2}Motor Controllers and Drivers}{2}
+\contentsline {subsubsection}{\numberline {1.2.3}The ROS Base Controller}{3}
+\contentsline {subsubsection}{\numberline {1.2.4}Frame-Base Motion using the move\_base ROS Package}{3}
+\contentsline {subsubsection}{\numberline {1.2.5}SLAM using the gmapping and amcl ROS Packages}{3}
+\contentsline {subsubsection}{\numberline {1.2.6}Semantic Goals}{3}
+\contentsline {subsection}{\numberline {1.3}Setting up the Network}{3}
+\contentsline {subsection}{\numberline {1.4}Testing with the fake and the real Turtlebot}{4}
+\contentsline {subsection}{\numberline {1.5}Testing a node - Turtlebot Follower}{4}
+\contentsline {subsection}{\numberline {1.6}Testing a node - Auto Docking}{4}
+\contentsline {subsection}{\numberline {1.7}Goal 1 Basic Motion of Mobile Base}{4}
+\contentsline {subsubsection}{\numberline {1.7.1}From command prompt}{4}
+\contentsline {subsubsection}{\numberline {1.7.2}By using a node}{5}
+\contentsline {subsection}{\numberline {1.8}Goal 2 = Advanced Motion of Mobile Base}{5}
+\contentsline {subsubsection}{\numberline {1.8.1}Dead Reckoning}{6}
+\contentsline {subsection}{\numberline {1.9}Goal 3 = Navigating a Square using Twist+Odometry}{6}
+\contentsline {subsection}{\numberline {1.10}Goal 4 = Navigation with Path Planning move\_base}{7}
+\contentsline {section}{\numberline {2}Part 2 - Planar Laser RangeFinder}{7}
+\contentsline {section}{\numberline {3}Part 3 - Navigation $\&$ Localization}{7}
+\contentsline {section}{\numberline {4}Part 4 - Controlling with Android}{7}

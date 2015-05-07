@@ -8,18 +8,9 @@
 \usepackage{verbatim}
 \usepackage{listings} 
 \usepackage{graphicx}
-
-\usepackage{ifpdf}
-\ifpdf
-\usepackage[breaklinks,colorlinks,linkcolor=black,citecolor=black,
-            urlcolor=black]{hyperref}
-\else
-\usepackage{url}
-\fi
-
 \author{Mashruf Zaman Chowdhury}
 \pagestyle{plain}
-\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage[top=1in, bottom=1in, left=1.5in, right=1.5in]{geometry}
 
 
 \usepackage{enumitem}
@@ -112,7 +103,7 @@ Finally, at the highest level of abstraction, motion goals are specified semanti
 
 \subsection{Setting up the Network}
 
-The primary requirement for getting your TurtleBot running is connecting to a network so that we can operate it remotely. After both TurtleBot and Workstation is connected to a network, it is time to set ROS\_MASTER\_URI and ROS\_HOSTNAME. The ROS\_MASTER\_URI tells the rest of the nodes at which address they can find the ROS master.
+The primary requirement for getting your TurtleBot running is connecting to a network so that we can operate it remotely. After both TurtleBot and Workstation is connected to a network, it is time to set ROS\_MASTER\_URI and ROS\_HOSTNAME. The ROS\_MASTER\_URI tells the rest of the nodes at which address they can find the ROS master.\\
 
 Here we setup the TurtleBot netbook as a ROS node and our Workstation as a ROS master. Before this is done, we need to determine the IP address of your TurtleBot netbook and Workstation. This can be found by typing ``ifconfig'' in a terminal. Our IP address are found under wlan0, and it's the numbers proceeding ``inet addr:''.
 
@@ -153,9 +144,7 @@ $ roslaunch kobuki_auto_docking activate.launch --screen
 \end{lstlisting}
 
 But for our case it did find the dock perfectly but with a slight error.
-\\\\
-\textbf{A video of the Auto Docking can be seen in this link:}\\ 
-\fbox{\url{https://www.youtube.com/watch?v=fQKv0jhXQxY}}
+[link of the video]
 
 
 \subsection{Goal 1 Basic Motion of Mobile Base}
@@ -187,7 +176,7 @@ $rospack profile
 \end{lstlisting}
 
 From command prompt we just use one command at a time. But we want to do some sequential tasks, so it is better to give commands again and again then to put them in a source code file or node. \\
-We use timed Twist commands to move the robot forward a certain distance, rotate 180 degrees, then move forward again for the same time and at the same speed where it will hopefully end up where it started. Finally, we will rotate the robot 180 degrees one more time to match the original orientation.
+We use timed Twist commands to move the robot forward a certain distance, rotate 180 degrees, then move forward again for the same time and at the same speed where it will hopefully end up where it started. Finally, we will rotate the robot 180 degrees one more time to match the original orientation.\\\\
 
 This is a \textbf{Time and Speed} based approximation, which we shall see will not be as accurate as expected. Here are the code segments to do it:
 
@@ -227,9 +216,10 @@ let's assume that we have some data from the laser in the form of distances from
 
 Such is the case for the turtlebot Odometry data we use to move the robot.
 While the \textbf{/base\_link} frame corresponds to a real physical part of Controlling a Mobile Base robot, the \textbf{/odom} frame is defined by the translations and rotations encapsulated in the odometry data. These transformations move the robot relative to the \textbf{/odom} frame.
-In ROS if we see the \textbf{nav\_msgs/Odometry} message structure, \textbf{/odom }is used as the parent frame and \textbf{/base\_footprint} (for turtlebot) as the \textbf{child\_frame\_id}. The transformation between these two frames, is with the help of tf library.
+In ROS if we see the \textbf{nav\_msgs/Odometry} message structure, \textbf{/odom }is used as the parent frame and \textbf{/base\_footprint} (for turtlebot) as the \textbf{child\_frame\_id}. The transformation between these two frames, is with the help of tf library.\\
 
-Rather than guessing distances and angles based on time and speed, our next script will monitor the robot's position and orientation as reported by the transformation between the \textbf{/odom }and \textbf{/base\_footprint} frames.
+Rather than guessing distances and angles based on time and speed, our next script will monitor the robot's position and orientation as reported by the transformation between the \textbf{/odom }and \textbf{/base\_footprint} frames.\\
+ 
 
 We ssh into the turtlebot and run the follwing scripts
 on Turtlebot:
@@ -258,10 +248,6 @@ $rosrun rbx1_nav odom_out_and_back.py
 Using odometry the results improves significantly from the timed out-and-back case, because still accuracy and reliability of this process depends on the robot's internal sensors, the accuracy of the calibration procedure, and environmental conditions.
 Since the robot is performing a very simple task, the navigation error is slight, and it is more evident after performing the task successively several times.
 
-\begin{center}
-\includegraphics[width=0.7\textwidth]{odom_out_and_back.jpg}
-\end{center}
-
 \subsubsection{Dead Reckoning}
 Even small amount of error in the robot odometry data accumulates over time. Hence a robot navigating only using internal motion data and without any reference to external landmarks will grow on it's mistakes and eventually be completely lost. This is knows as Dead Reckoning. \\
 We can improve this for our turtlebot using map and SLAM.
@@ -271,9 +257,6 @@ In a similar way to the previous Goal, in Goal 3 the robot navigates through a s
 
 However, this time we will attempt to move the robot in a square by setting four waypoints, one at each corner. At the end of the run, we can see that the errors accumulated in odometry are more visible:
 
-\begin{center}
-\includegraphics[width=0.7\textwidth]{square_py.jpg}
-\end{center}
 
 \subsection{Goal 4 = Navigation with Path Planning move\_base}
 ROS provides the move\_base package that allows us to specify a target position and orientation of the robot with respect to some frame of reference.
@@ -283,15 +266,6 @@ Following figure summarizes how the move\_base path planner works. On the bottom
 \begin{center}
 \includegraphics[width=\textwidth]{overview_small.png}
 \end{center}
-
-
-\begin{center}
-\includegraphics[width=0.5\textwidth]{move_base.jpg}
-\end{center}
-
-\textbf{A video of this movement can be seen here:} \\
-\fbox{\url{https://www.youtube.com/watch?v=5e61iTaRLl0}}
-
 \section{Part 2 - Planar Laser RangeFinder}
 
 
