@@ -8,9 +8,20 @@
 \usepackage{verbatim}
 \usepackage{listings} 
 \usepackage{graphicx}
+
+
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[breaklinks,colorlinks,linkcolor=black,citecolor=black,
+            urlcolor=black]{hyperref}
+\else
+\usepackage{url}
+\fi
+
+
 \author{Mashruf Zaman Chowdhury}
 \pagestyle{plain}
-\usepackage[top=1in, bottom=1in, left=1.5in, right=1.5in]{geometry}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 
 
 \usepackage{enumitem}
@@ -69,7 +80,7 @@
 Controlling a mobile robot can be done at a number of levels and ROS provides methods for most of them.
 
 \begin{center}
-\includegraphics[width=0.2\textwidth]{motion_control.png}\\
+\includegraphics[width=0.2\textwidth]{images/motion_control.png}\\
 \end{center}
 
 \subsubsection{Motors, Wheels and Encoders}
@@ -143,8 +154,10 @@ But it is just loading the algorithm, which is still not active. The algorithm i
 $ roslaunch kobuki_auto_docking activate.launch --screen
 \end{lstlisting}
 
-But for our case it did find the dock perfectly but with a slight error.
-[link of the video]
+But for our case it did find the dock perfectly but with a slight error.\\
+
+\textbf{A video of the Auto Docking can be seen in this link:}\\
+\fbox{\url{https://www.youtube.com/watch?v=fQKv0jhXQxY}}
 
 
 \subsection{Goal 1 Basic Motion of Mobile Base}
@@ -176,7 +189,33 @@ $rospack profile
 \end{lstlisting}
 
 From command prompt we just use one command at a time. But we want to do some sequential tasks, so it is better to give commands again and again then to put them in a source code file or node. \\
-We use timed Twist commands to move the robot forward a certain distance, rotate 180 degrees, then move forward again for the same time and at the same speed where it will hopefully end up where it started. Finally, we will rotate the robot 180 degrees one more time to match the original orientation.\\\\
+We use timed Twist commands to move the robot forward a certain distance, rotate 180 degrees, then move forward again for the same time and at the same speed where it will hopefully end up where it started. Finally, we will rotate the robot 180 degrees one more time to match the original orientation.\\
+
+\textbf{Algorithm 1: Time and Speed based out and back}
+\begin{lstlisting}[frame=single]
+rate = 50
+goal_distance = 1.0 m
+linear_speed = 0.2m/s
+linear_duration = goal_distance / linear_speed;
+
+angular_speed = 1.0
+goal_angle = pi
+angular_duration = goal_angle / angular_speed;
+
+A: Repeat step 1 to 6 twice
+
+	1. ticks = linear_duration / rate
+	2. while(t < ticks)
+		robot will walk 1 meter straight
+	3. robot will sleep 1 cycle
+	
+	4. ticks = goal_angle * rate
+	5. while(t<ticks)
+		robot rotates 180*
+	6. robot will sleep 1 cycle
+	
+B: Program Terminates
+\end{lstlisting}
 
 This is a \textbf{Time and Speed} based approximation, which we shall see will not be as accurate as expected. Here are the code segments to do it:
 
@@ -211,15 +250,50 @@ it should give us a better result if we use it. We shall see it in the next step
 let's assume that we have some data from the laser in the form of distances from the laser's center point. In other words, we have some data in the \textbf{``base\_laser"} coordinate frame. Now suppose we want to take this data and use it to help the mobile base avoid obstacles in the world. To do this successfully, we need a way of transforming the laser scan we've received from the \textbf{``base\_laser"} frame to the \textbf{``base\_link"} frame. In essence, we need to define a relationship between the \textbf{``base\_laser"} and \textbf{``base\_link"} coordinate frames.\\
 
 \begin{center}
-\includegraphics[width=\textwidth]{simple_robot.png}\\
+\includegraphics[width=\textwidth]{images/simple_robot.png}\\
 \end{center}
 
 Such is the case for the turtlebot Odometry data we use to move the robot.
 While the \textbf{/base\_link} frame corresponds to a real physical part of Controlling a Mobile Base robot, the \textbf{/odom} frame is defined by the translations and rotations encapsulated in the odometry data. These transformations move the robot relative to the \textbf{/odom} frame.
-In ROS if we see the \textbf{nav\_msgs/Odometry} message structure, \textbf{/odom }is used as the parent frame and \textbf{/base\_footprint} (for turtlebot) as the \textbf{child\_frame\_id}. The transformation between these two frames, is with the help of tf library.\\
+In ROS if we see the \textbf{nav\_msgs/Odometry} message structure, \textbf{/odom }is used as the parent frame and \textbf{/base\_footprint} (for turtlebot) as the \textbf{child\_frame\_id}. The transformation between these two frames, is with the help of tf library.
 
-Rather than guessing distances and angles based on time and speed, our next script will monitor the robot's position and orientation as reported by the transformation between the \textbf{/odom }and \textbf{/base\_footprint} frames.\\
- 
+Rather than guessing distances and angles based on time and speed, our next script will monitor the robot's position and orientation as reported by the transformation between the \textbf{/odom }and \textbf{/base\_footprint} frames.
+
+
+\textbf{Algorithm 2: ODOMETRY based out and back}
+\begin{lstlisting}[frame=single]
+rate = 50
+goal_distance = 1.0 m
+linear_speed = 0.2m/s
+linear_duration = goal_distance / linear_speed;
+
+angular_speed = 1.0
+goal_angle = pi
+angular_duration = goal_angle / angular_speed;
+
+A: Repeat step 1 to 6 twice
+
+	1. get initial position
+	2. while distance < goal_distance
+		robot will go at a speed set by linear_speed
+		sleep 1 cycle
+		get new linear position from ODOMETRY
+		calculate new distance from new position and  old position
+	3. stop the robot
+		Set last_angle = rotation
+			turn_angle = 0
+	4. while (turn_angle < goal_angle)
+		start rotating
+		sleep 1 cycle
+		get new rotation position from ODOMETRY
+		delta_angle = (rotation - last_angle)
+		turn_angle += delta_angle
+		last_angle = rotation	
+	5. stop the robot 1 cycle before next run
+	
+B: Program Terminates
+\end{lstlisting}
+
 
 We ssh into the turtlebot and run the follwing scripts
 on Turtlebot:
@@ -248,6 +322,10 @@ $rosrun rbx1_nav odom_out_and_back.py
 Using odometry the results improves significantly from the timed out-and-back case, because still accuracy and reliability of this process depends on the robot's internal sensors, the accuracy of the calibration procedure, and environmental conditions.
 Since the robot is performing a very simple task, the navigation error is slight, and it is more evident after performing the task successively several times.
 
+\begin{center}
+\includegraphics[width=\textwidth]{images/odom_out_and_back.jpg}\\
+\end{center}
+
 \subsubsection{Dead Reckoning}
 Even small amount of error in the robot odometry data accumulates over time. Hence a robot navigating only using internal motion data and without any reference to external landmarks will grow on it's mistakes and eventually be completely lost. This is knows as Dead Reckoning. \\
 We can improve this for our turtlebot using map and SLAM.
@@ -257,6 +335,9 @@ In a similar way to the previous Goal, in Goal 3 the robot navigates through a s
 
 However, this time we will attempt to move the robot in a square by setting four waypoints, one at each corner. At the end of the run, we can see that the errors accumulated in odometry are more visible:
 
+\begin{center}
+\includegraphics[width=\textwidth]{images/square_py.jpg}\\
+\end{center}
 
 \subsection{Goal 4 = Navigation with Path Planning move\_base}
 ROS provides the move\_base package that allows us to specify a target position and orientation of the robot with respect to some frame of reference.
@@ -264,16 +345,208 @@ ROS provides the move\_base package that allows us to specify a target position 
 Following figure summarizes how the move\_base path planner works. On the bottom left of figure is a base controller node for low level motion control. on the top right is the map server which provides a map of environment.
 
 \begin{center}
-\includegraphics[width=\textwidth]{overview_small.png}
+\includegraphics[width=\textwidth]{images/overview_small.png}
 \end{center}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/move_base.jpg}\\
+\end{center}
+
+\textbf{A video of this movement can be seen here:}\\
+\fbox{\url{https://www.youtube.com/watch?v=5e61iTaRLl0}}
+
 \section{Part 2 - Planar Laser RangeFinder}
 
+\subsection{RP-LIDAR}
+
+\begin{center}
+\includegraphics[scale=0.4]{images/lidarParts.png}\\
+\textit{The different RP-LIDAR's parts}
+\end{center}
+
+RP-LIDAR is a low-cost \textbf{360 degree} 2D Laser Scanner (LIDAR) system.\\
+It can perform scanning with a frequency of\textbf{ 5.5Hz} when sampling 360 points within \textbf{6 meter range}. \\
+
+RP-LIDAR is based on \textbf{laser triangulation ranging principle} :\\
+It emits modulated infrared laser signal and the laser signal is then reflected by the object to be detected. The returning signal is sampled by vision acquisition system in RP-LIDAR and the DSP embedded in RP-LIDAR start processing the sample data, output distance value and angle value between object and RP-LIDAR through communication interface.\\
+
+\begin{center}
+\includegraphics[scale=0.6]{images/robopeak-sensor.jpg}\\
+\textit{Graphical representation of laser triangulation}
+\end{center}
+
+The system can measure distance data in more than 2000 times' per second and with high resolution distance output ($<$1\% of the distance) :\\
+
+\begin{center}
+\begin{tabular}{|l|c|l|}
+\hline
+Data Type & Unit & Description\\
+\hline
+Distance & mm & Current measured distance value\\
+%\hline
+Heading & degree & Current heading angle of the measurement \\
+%\hline
+Quality & level & Quality of the measurement\\
+%\hline
+Start Flag & 	(Boolean) & Flag of a new scan\\
+\hline
+\end{tabular}\\
+
+\textit{Output data given by RP-LIDAR}
+\end{center}
+
+These data will be used in order to scan a map and to move the turtlebot in function of this map and the points detected. 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/RPLIDAR_room.jpg}\\
+\textit{Example of scanned map using RP-LIDAR}
+\end{center}
+
+\subsection{Integration on Turtlebot2}
+
+\subsubsection{rplidar$\_$ros package}
+The package \textbf{"rplidar\_ros"} needs to be added to integrate the RP-LIDAR to ROS. 
+As this package is only available in \textbf{Ros Hydro}, this ROS distribution will be used (the buildsystem \textbf{"Catkin"} is also required).\\
+Once it has been done, the most important informations we want are located in the rplidar node (\textbf{rplidarNode}).\\
+The \textbf{rplidarNode} is a driver for RP-LIDAR which reads RP-LIDAR raw scan result using RPLIDAR's SDK and convert the informations to messages in the topic \textbf{sensor\_msgs/LaserScan}.\\
+
+This node is created with the help of the \textbf{\underline{rplidar.launch}} file, located in the \textbf{"rplidar\_ros"} package.
+All the parameters needed for the Lidar are stated in this file : \\
+
+\begin{lstlisting}[frame=single] 
+<launch>
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB1"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="base_laser_link"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+</launch>
+\end{lstlisting}
+
+
+\subsubsection{turtlebot$\_$le2i package}
+
+
+Then it is necessary to create a new package where the position of the Lidar on the turtlebot, compared with the "[parent]" is given (which in our case is the \textbf{plate\_top\_link}). This will be used by the  $\textbf{tf}$ node, to compute the laser position compared to the base. \\
+In our case, this package is named \textbf{"turtlebot\_le2i"}. It contains a bringup launch file called \textbf{rplidar\_minimal.launch} which launch the simple bringup \textbf{minimal.launch}, the \textbf{rplidar.launch} and also some .xml files. \\
+In these files, one is the \textbf{\underline{rplidar.urdf.xacro}}.
+It contains all about the RP-LIDAR position : the origin, the box size, ...  Here is a part of this file : 
+
+\begin{lstlisting}[frame=single] 
+	<xacro:macro name="sensor_rplidar" params="parent">
+  	<joint name="laser" type="fixed">
+		<origin xyz="0.180 0.00 0.040" rpy="0 3.14159265 0" />
+		<parent link="${parent}" />
+		<child link="base_laser_link" />
+	</joint>
+
+	<link name="base_laser_link">
+		<visual>
+			<geometry>
+				<box size="0.00 0.05 0.06" />
+			</geometry>
+			<material name="Green" />
+		</visual>
+		<inertial>
+			<mass value="0.000001" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+			iyy="0.0001" iyz="0.0" izz="0.0001" />
+		</inertial>
+	</link>
+	</xacro:macro>
+\end{lstlisting}
+\underline{Note} : Xacro is an XML macro language, used to construct shorter and more readable XML files.
+
+\subsubsection{base$\_$laser$\_$link} 
+\begin{center}
+\includegraphics[width=\textwidth]{images/tf_coordinates_small.png}\\
+\end{center}
+
+You can see in the \textbf{"Relative Position"}, the values are the same as the coordinates stated in the .urdf (cf. \textit{Configure Ros}).\\
+There is also the computed \textbf{"Position"} from the base to the lidar, thanks to the \textbf{tf} node taking into account the relative position from the \textbf{plate\_top\_link}, which has also a relative position compared with his parent and so on until the\textbf{base\_footprint}. \\
+
+\subsubsection{Displaying the data}
+To extract the data from the RP-LIDAR :\\
+bringup the turtlebot, \\
+then start a rplidar node and run \textbf{rplidar client process} to print the raw scan result :
+\begin{lstlisting}[frame=single] 
+$ roslaunch rplidar_ros rplidar.launch
+$ rosrun rplidar_ros rplidarNodeClient
+\end{lstlisting}
+
+\begin{center}
+%\includegraphics[width=0.5\textwidth]{images/rplidarInfo.png}\\
+\end{center}
+
+To see the data coming from the RP-LIDAR :\\
+bringup the turtlebot, \\
+then start a rplidar node and view the scan result in rviz:
+\begin{lstlisting}[frame=single] 
+$ roslaunch rplidar_ros view_rplidar.launch
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/infos+view.png}\\
+\end{center}
+
+This scanner will be used here, for the application of general simultaneous localization and mapping (SLAM).
 
 \section{Part 3 - Navigation $\&$ Localization}
 
 \section{Part 4 - Controlling with Android}
 
+\subsection{Pairing through a public master}
 
-something
+\subsubsection{Different bringup}
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+There are three different ways to bringup the turtlebot :\\\\
+
+\> -The \textbf{Minimal}, which we used previously.\\\\
+
+
+
+ And two others : \\
+\> -The \textbf{App Manager}, which can do everything minimal does, but also offers the option \\ of managing your programs as robot apps via the app manager.\\\\
+
+\> -And the \textbf{Android Enabled}, which starts private/public masters and allows the app \\ manager to be controlled by a remote android device via the public master.\\\\
+\end{tabbing}
+
+\subsubsection{Concert}
+
+What will be used for controlling with Android is the following statement : 
+\begin{lstlisting}[frame=single]
+$ rocon_launch turtlebot_bringup bringup.concert
+\end{lstlisting}
+
+
+ The concert is a multimaster framework running on top of the interactions and \textbf{rocon\_launch} is a multimaster version of roslaunch.\\
+ 
+These ones allow us to launch the last two bringup launch files.
+This is exactly what contains the \textbf{bringup.concert} : 
+\begin{lstlisting}[frame=single]
+<concert>
+    <launch package="turtlebot_bringup" name="paired_public.launch" port="11311"/>
+    <launch package="turtlebot_bringup" name="minimal_with_appmanager.launch" port="11312"/>
+</concert>
+\end{lstlisting}
+
+It launches two linux shells (gnome-terminal or konsole) which spawn the following ros master environments : 
+
+\begin{center}
+\includegraphics[scale=0.4]{images/twoMasters.png}
+\end{center}
+
+One is the \textbf{Private Master} : \\
+\textbf{-Port:} 11312 \\
+\textbf{-Software:} This master runs just the rocon gateway and robot app\_manager with a few default software, this means complex navigation as SLAM is not possible in this linux shell.\\
+
+The other is the \textbf{Public Master} : \\
+\textbf{-Port:} 11311 \\
+\textbf{-Software:} This master runs another rocon gateway and a simple pairing script that assists the invitation of the private app\_manager and flipping the appropriate topics back and forth between the two masters. This one will be accessed by the android application. 
 
 \end{document}
