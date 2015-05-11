@@ -132,34 +132,6 @@ These commands will add the export lines to the system bashrc file so they will 
 \subsection{Testing with the fake and the real Turtlebot}
 The programs can be tested both in a simulated environment and in the real robot. However, when testing the real robot using the current configuration of the kobuki base in the turtlebot, it is necessary to remap the topic $\textbf{/mobile\_base/commands/velocity}$ to $/\textbf{cmd\_vel}$. In order do this, a launch file is created to remap this topic, in fact in every launch file we changed the topic like this.
 
-\subsection{Testing a node - Turtlebot Follower}
-We initiate the turtlebot from our workstation:
-\begin{lstlisting}[frame=single]
-$ ssh turtlebot@192.168.0.100 , Password:napelturbot
-$ roslaunch turtlebot_le2i remap_rplidar_minimal.launch (Bring up turtlebot)
-$ roslaunch turtlebot_follower follower.launch (Start follower demo)
-\end{lstlisting}
-Now the Turtlebot detects and follows the person/obstacle in front of it.
-[link of the video]
-
-\subsection{Testing a node - Auto Docking}
-We launch the kobuki core by typing:
-
-\begin{lstlisting}[frame=single] 
-$ roslaunch kobuki_auto_docking compact.launch --screen
-\end{lstlisting}
-But it is just loading the algorithm, which is still not active. The algorithm is implemented as a typical action server. We need to call the server via an action client:
-
-\begin{lstlisting}[frame=single] 
-$ roslaunch kobuki_auto_docking activate.launch --screen
-\end{lstlisting}
-
-But for our case it did find the dock perfectly but with a slight error.\\
-
-\textbf{A video of the Auto Docking can be seen in this link:}\\
-\fbox{\url{https://www.youtube.com/watch?v=fQKv0jhXQxY}}
-
-
 \subsection{Goal 1 Basic Motion of Mobile Base}
 
 We can do this in two way - from command prompt or by using a node. We see both way - 
@@ -496,9 +468,36 @@ This scanner will be used here, for the application of general simultaneous loca
 
 \section{Part 3 - Navigation $\&$ Localization}
 
-\section{Part 4 - Controlling with Android}
+\section{Part 4 - Controlling with Android and Others}
 
-\subsection{Pairing through a public master}
+\subsection{Testing a node - Auto Docking}
+We launch the kobuki core by typing:
+
+\begin{lstlisting}[frame=single] 
+$ roslaunch kobuki_auto_docking compact.launch --screen
+\end{lstlisting}
+But it is just loading the algorithm, which is still not active. The algorithm is implemented as a typical action server. We need to call the server via an action client:
+
+\begin{lstlisting}[frame=single] 
+$ roslaunch kobuki_auto_docking activate.launch --screen
+\end{lstlisting}
+
+\textbf{For our case it did find the dock perfectly but didn't set correctly due to hardware errors.}
+
+\textbf{A video of the Auto Docking can be seen in this link:}\\
+\fbox{\url{https://www.youtube.com/watch?v=fQKv0jhXQxY}}
+
+\subsection{Testing a node - Turtlebot Follower}
+We initiate the turtlebot from our workstation:
+\begin{lstlisting}[frame=single]
+$ ssh turtlebot@192.168.0.100 , Password:napelturbot
+$ roslaunch turtlebot_le2i remap_rplidar_minimal.launch (Bring up turtlebot)
+$ roslaunch turtlebot_follower follower.launch (Start follower demo)
+\end{lstlisting}
+Now the Turtlebot detects and follows the person/obstacle in front of it.
+[link of the video]
+
+\subsection{Android: Pairing through a public master}
 
 \subsubsection{Different bringup}
 

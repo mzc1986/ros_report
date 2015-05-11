@@ -9,24 +9,24 @@
 \BOOKMARK [3][-]{subsubsection.1.2.6}{Semantic Goals}{subsection.1.2}% 9
 \BOOKMARK [2][-]{subsection.1.3}{Setting up the Network}{section.1}% 10
 \BOOKMARK [2][-]{subsection.1.4}{Testing with the fake and the real Turtlebot}{section.1}% 11
-\BOOKMARK [2][-]{subsection.1.5}{Testing a node - Turtlebot Follower}{section.1}% 12
-\BOOKMARK [2][-]{subsection.1.6}{Testing a node - Auto Docking}{section.1}% 13
-\BOOKMARK [2][-]{subsection.1.7}{Goal 1 Basic Motion of Mobile Base}{section.1}% 14
-\BOOKMARK [3][-]{subsubsection.1.7.1}{From command prompt}{subsection.1.7}% 15
-\BOOKMARK [3][-]{subsubsection.1.7.2}{By using a node}{subsection.1.7}% 16
-\BOOKMARK [2][-]{subsection.1.8}{Goal 2 = Advanced Motion of Mobile Base}{section.1}% 17
-\BOOKMARK [3][-]{subsubsection.1.8.1}{Dead Reckoning}{subsection.1.8}% 18
-\BOOKMARK [2][-]{subsection.1.9}{Goal 3 = Navigating a Square using Twist+Odometry}{section.1}% 19
-\BOOKMARK [2][-]{subsection.1.10}{Goal 4 = Navigation with Path Planning move\137base}{section.1}% 20
-\BOOKMARK [1][-]{section.2}{Part 2 - Planar Laser RangeFinder}{}% 21
-\BOOKMARK [2][-]{subsection.2.1}{RP-LIDAR}{section.2}% 22
-\BOOKMARK [2][-]{subsection.2.2}{Integration on Turtlebot2}{section.2}% 23
-\BOOKMARK [3][-]{subsubsection.2.2.1}{rplidar\137ros package}{subsection.2.2}% 24
-\BOOKMARK [3][-]{subsubsection.2.2.2}{turtlebot\137le2i package}{subsection.2.2}% 25
-\BOOKMARK [3][-]{subsubsection.2.2.3}{base\137laser\137link}{subsection.2.2}% 26
-\BOOKMARK [3][-]{subsubsection.2.2.4}{Displaying the data}{subsection.2.2}% 27
-\BOOKMARK [1][-]{section.3}{Part 3 - Navigation \046 Localization}{}% 28
-\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android}{}% 29
-\BOOKMARK [2][-]{subsection.4.1}{Pairing through a public master}{section.4}% 30
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Different bringup}{subsection.4.1}% 31
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Concert}{subsection.4.1}% 32
+\BOOKMARK [2][-]{subsection.1.5}{Goal 1 Basic Motion of Mobile Base}{section.1}% 12
+\BOOKMARK [3][-]{subsubsection.1.5.1}{From command prompt}{subsection.1.5}% 13
+\BOOKMARK [3][-]{subsubsection.1.5.2}{By using a node}{subsection.1.5}% 14
+\BOOKMARK [2][-]{subsection.1.6}{Goal 2 = Advanced Motion of Mobile Base}{section.1}% 15
+\BOOKMARK [3][-]{subsubsection.1.6.1}{Dead Reckoning}{subsection.1.6}% 16
+\BOOKMARK [2][-]{subsection.1.7}{Goal 3 = Navigating a Square using Twist+Odometry}{section.1}% 17
+\BOOKMARK [2][-]{subsection.1.8}{Goal 4 = Navigation with Path Planning move\137base}{section.1}% 18
+\BOOKMARK [1][-]{section.2}{Part 2 - Planar Laser RangeFinder}{}% 19
+\BOOKMARK [2][-]{subsection.2.1}{RP-LIDAR}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.2}{Integration on Turtlebot2}{section.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.2.1}{rplidar\137ros package}{subsection.2.2}% 22
+\BOOKMARK [3][-]{subsubsection.2.2.2}{turtlebot\137le2i package}{subsection.2.2}% 23
+\BOOKMARK [3][-]{subsubsection.2.2.3}{base\137laser\137link}{subsection.2.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Displaying the data}{subsection.2.2}% 25
+\BOOKMARK [1][-]{section.3}{Part 3 - Navigation \046 Localization}{}% 26
+\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 27
+\BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.3}{Android: Pairing through a public master}{section.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Different bringup}{subsection.4.3}% 31
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Concert}{subsection.4.3}% 32
