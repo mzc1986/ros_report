@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.7)  11 MAY 2015 17:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.7)  11 MAY 2015 17:14
 entering extended mode
 **ros_report.tex
 
@@ -1022,24 +1022,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 862--865
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 882.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 880.
 [23 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
 s/twoMasters.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 882.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 880.
 
 ("C:\Users\EpicFailure\Desktop\bsc2\Robotic Engineering 2 (ROS)\Report\ros_repo
 rt.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 882.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 882.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 880.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 880.
 Package rerunfilecheck Info: File `ros_report.out' has not changed.
 (rerunfilecheck)             Checksum: 53233F2A450E243CB04246BFCE195B82;4058.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 882.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 880.
  ) 
 Here is how much of TeX's memory you used:
- 9402 strings out of 493921
- 133640 string characters out of 3147264
+ 9395 strings out of 493921
+ 133559 string characters out of 3147264
  282955 words of memory out of 3000000
- 12262 multiletter control sequences out of 15000+200000
+ 12257 multiletter control sequences out of 15000+200000
  28488 words of font info for 76 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  32i,6n,49p,902b,1880s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1052,9 +1052,9 @@ fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on ros_report.pdf (23 pages, 1660141 bytes).
+Output written on ros_report.pdf (23 pages, 1660131 bytes).
 PDF statistics:
- 705 PDF objects out of 1000 (max. 8388607)
- 291 named destinations out of 1000 (max. 500000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 289 named destinations out of 1000 (max. 500000)
  504 words of extra memory for PDF output out of 10000 (max. 10000000)
 
