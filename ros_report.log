@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.7)  11 MAY 2015 17:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.7)  11 MAY 2015 23:57
 entering extended mode
 **ros_report.tex
 
@@ -545,21 +545,21 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
 ("C:\Users\EpicFailure\Desktop\bsc2\Robotic Engineering 2 (ROS)\Report\ros_repo
 rt.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 75.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -579,7 +579,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 \c@lstlisting=\count128
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring ON on input line 55.
+Package hyperref Info: Link coloring ON on input line 75.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -588,9 +588,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
 
 ("C:\Users\EpicFailure\Desktop\bsc2\Robotic Engineering 2 (ROS)\Report\ros_repo
 rt.out")
@@ -632,11 +632,22 @@ rt.out")
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+
+ []
+
+[1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for U+msa on input line 80.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 80.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -645,416 +656,503 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 83.
 
 ("C:\Users\EpicFailure\Desktop\bsc2\Robotic Engineering 2 (ROS)\Report\ros_repo
 rt.toc"
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
+ [2])
 \tf@toc=\write4
- [2]
+ [3]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 66.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 69.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 91.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
 
-<images/motion_control.png, id=272, 76.78688pt x 328.97906pt>
+<images/motion_control.png, id=331, 76.78688pt x 328.97906pt>
 File: images/motion_control.png Graphic file (type png)
 
 <use images/motion_control.png>
-Package pdftex.def Info: images/motion_control.png used on input line 83.
+Package pdftex.def Info: images/motion_control.png used on input line 105.
 (pdftex.def)             Requested size: 90.5922pt x 388.15176pt.
- [3 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+ [4 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
 s/motion_control.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 144.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [4]
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
+) [5]
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--165
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
 
  []
 
-<images/simple_robot.png, id=310, 637.582pt x 134.904pt>
+<images/simple_robot.png, id=369, 637.582pt x 134.904pt>
 File: images/simple_robot.png Graphic file (type png)
 
 <use images/simple_robot.png>
-Package pdftex.def Info: images/simple_robot.png used on input line 225.
+Package pdftex.def Info: images/simple_robot.png used on input line 248.
 (pdftex.def)             Requested size: 452.9679pt x 95.84425pt.
- [6 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+ [7 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
 s/simple_robot.png>]
-<images/odom_out_and_back.jpg, id=339, 803.0pt x 620.3175pt>
+<images/odom_out_and_back.jpg, id=399, 803.0pt x 620.3175pt>
 File: images/odom_out_and_back.jpg Graphic file (type jpg)
 
 <use images/odom_out_and_back.jpg>
-Package pdftex.def Info: images/odom_out_and_back.jpg used on input line 298.
+Package pdftex.def Info: images/odom_out_and_back.jpg used on input line 322.
 (pdftex.def)             Requested size: 452.9679pt x 349.92159pt.
- [7]
-<images/square_py.jpg, id=384, 803.0pt x 613.29124pt>
+ [8]
+<images/square_py.jpg, id=443, 803.0pt x 613.29124pt>
 File: images/square_py.jpg Graphic file (type jpg)
 
 <use images/square_py.jpg>
-Package pdftex.def Info: images/square_py.jpg used on input line 311.
+Package pdftex.def Info: images/square_py.jpg used on input line 351.
 (pdftex.def)             Requested size: 452.9679pt x 345.95807pt.
- [8 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+ [9 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
 s/odom_out_and_back.jpg>]
-<images/overview_small.png, id=389, 626.34pt x 197.538pt>
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+
+ []
+
+<images/overview_small.png, id=457, 626.34pt x 197.538pt>
 File: images/overview_small.png Graphic file (type png)
 
 <use images/overview_small.png>
-Package pdftex.def Info: images/overview_small.png used on input line 320.
+Package pdftex.def Info: images/overview_small.png used on input line 363.
 (pdftex.def)             Requested size: 452.9679pt x 142.86324pt.
-
-<images/move_base_square.jpg, id=390, 1043.9pt x 796.9775pt>
+ [10 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/square_py.jpg> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS
+)/Report/images/overview_small.png>]
+<images/move_base_square.jpg, id=463, 1043.9pt x 796.9775pt>
 File: images/move_base_square.jpg Graphic file (type jpg)
 
 <use images/move_base_square.jpg>
-Package pdftex.def Info: images/move_base_square.jpg used on input line 324.
+Package pdftex.def Info: images/move_base_square.jpg used on input line 383.
 (pdftex.def)             Requested size: 452.9679pt x 345.81898pt.
- [9 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/square_py.jpg> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)
-/Report/images/overview_small.png>]
-<images/lidarParts.png, id=397, 812.28468pt x 432.11438pt>
+
+<images/lidarParts.png, id=465, 812.28468pt x 432.11438pt>
 File: images/lidarParts.png Graphic file (type png)
 
 <use images/lidarParts.png>
-Package pdftex.def Info: images/lidarParts.png used on input line 335.
+Package pdftex.def Info: images/lidarParts.png used on input line 396.
 (pdftex.def)             Requested size: 324.90811pt x 172.84268pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--341
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 342--344
+ [11 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/move_base_square.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 400--402
 
  []
 
-[10 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/move_base_square.jpg> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 
-2 (ROS)/Report/images/lidarParts.png>]
-<images/robopeak-sensor.jpg, id=403, 572.1375pt x 328.22626pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--405
+
+ []
+
+<images/robopeak-sensor.jpg, id=481, 572.1375pt x 328.22626pt>
 File: images/robopeak-sensor.jpg Graphic file (type jpg)
 
 <use images/robopeak-sensor.jpg>
-Package pdftex.def Info: images/robopeak-sensor.jpg used on input line 346.
+Package pdftex.def Info: images/robopeak-sensor.jpg used on input line 407.
 (pdftex.def)             Requested size: 343.28514pt x 196.93727pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
-<images/RPLIDAR_room.jpg, id=404, 702.625pt x 520.94624pt>
+<images/RPLIDAR_room.jpg, id=482, 702.625pt x 520.94624pt>
 File: images/RPLIDAR_room.jpg Graphic file (type jpg)
 
 <use images/RPLIDAR_room.jpg>
-Package pdftex.def Info: images/RPLIDAR_room.jpg used on input line 373.
+Package pdftex.def Info: images/RPLIDAR_room.jpg used on input line 434.
 (pdftex.def)             Requested size: 351.31163pt x 260.47249pt.
+ [12 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/lidarParts.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (RO
+S)/Report/images/robopeak-sensor.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 379.
+(hyperref)                removing `math shift' on input line 440.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 379.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--384
-
- []
-
-[11 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/robopeak-sensor.jpg> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2
- (ROS)/Report/images/RPLIDAR_room.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 385--387
+Underfull \hbox (badness 10000) in paragraph at lines 441--445
 
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 401.
+Underfull \hbox (badness 10000) in paragraph at lines 446--448
+
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 401.
+(hyperref)                removing `math shift' on input line 462.
 
 
-Overfull \hbox (6.75739pt too wide) in paragraph at lines 404--408
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 462.
+
+
+Overfull \hbox (6.75739pt too wide) in paragraph at lines 465--469
 \OT1/ptm/m/n/10 In our case, this pack-age is named \OT1/ptm/b/n/10 "turtle-bot
 []le2i"\OT1/ptm/m/n/10 . It con-tains a bringup launch file called \OT1/ptm/b/n
 /10 rpl-i-dar[]minimal.launch
  []
 
+[13 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/RPLIDAR_room.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 435.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 435.
+(hyperref)                removing `math shift' on input line 496.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 435.
+(hyperref)                removing `math shift' on input line 496.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 435.
+(hyperref)                removing `math shift' on input line 496.
 
-<images/tf_coordinates_small.png, id=409, 618.81187pt x 402.00188pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 496.
+
+<images/tf_coordinates_small.png, id=502, 618.81187pt x 402.00188pt>
 File: images/tf_coordinates_small.png Graphic file (type png)
 
 <use images/tf_coordinates_small.png>
-Package pdftex.def Info: images/tf_coordinates_small.png used on input line 437
+Package pdftex.def Info: images/tf_coordinates_small.png used on input line 498
 .
 (pdftex.def)             Requested size: 452.9679pt x 294.27475pt.
- [12]
-Underfull \hbox (badness 10000) in paragraph at lines 440--442
 
- []
-
-<images/infos+view.png, id=447, 375.65344pt x 245.41687pt>
-File: images/infos+view.png Graphic file (type png)
-
-<use images/infos+view.png>
-Package pdftex.def Info: images/infos+view.png used on input line 464.
-(pdftex.def)             Requested size: 452.9679pt x 295.94798pt.
- [13 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
-es/tf_coordinates_small.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 469.
-
-File: images/overview_small.png Graphic file (type png)
-<use images/overview_small.png>
-Package pdftex.def Info: images/overview_small.png used on input line 479.
-(pdftex.def)             Requested size: 452.9679pt x 142.86324pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 488--489
+Underfull \hbox (badness 10000) in paragraph at lines 501--503
 
  []
 
 [14 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/infos+view.png>] <images/arena1.png, id=465, 120.45pt x 128.73094pt>
-File: images/arena1.png Graphic file (type png)
+s/tf_coordinates_small.png>]
+<images/infos+view.png, id=531, 375.65344pt x 245.41687pt>
+File: images/infos+view.png Graphic file (type png)
 
-<use images/arena1.png>
-Package pdftex.def Info: images/arena1.png used on input line 493.
+<use images/infos+view.png>
+Package pdftex.def Info: images/infos+view.png used on input line 525.
+(pdftex.def)             Requested size: 452.9679pt x 295.94798pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 530.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 530.
+
+File: images/overview_small.png Graphic file (type png)
+<use images/overview_small.png>
+Package pdftex.def Info: images/overview_small.png used on input line 541.
+(pdftex.def)             Requested size: 452.9679pt x 142.86324pt.
+ [15 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/infos+view.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
+
+ []
+
+<images/arena1.png, id=543, 120.45pt x 128.73094pt>
+File: images/arena1.png Graphic file (type png)
+ <use images/arena1.png>
+Package pdftex.def Info: images/arena1.png used on input line 555.
 (pdftex.def)             Requested size: 135.89174pt x 145.24817pt.
 
-Overfull \hbox (15.27687pt too wide) in paragraph at lines 507--508
+Overfull \hbox (15.27687pt too wide) in paragraph at lines 569--570
 \OT1/ptm/m/n/10 Gmapping (http://wiki.ros.org/gmapping) pack-age pro-vides lase
 r-based SLAM as a ROS node called \OT1/ptm/b/n/10 slam[]gmapping\OT1/ptm/m/n/10
  .
  []
 
-<images/BuildingMap+keyboard.png, id=466, 1063.72406pt x 529.22719pt>
+[16 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/arena1.png>]
+<images/BuildingMap+keyboard.png, id=549, 1063.72406pt x 529.22719pt>
 File: images/BuildingMap+keyboard.png Graphic file (type png)
 
 <use images/BuildingMap+keyboard.png>
-Package pdftex.def Info: images/BuildingMap+keyboard.png used on input line 529
+Package pdftex.def Info: images/BuildingMap+keyboard.png used on input line 591
 .
 (pdftex.def)             Requested size: 452.9679pt x 225.35867pt.
- [15 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
-es/arena1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 534--535
+
+Underfull \hbox (badness 10000) in paragraph at lines 596--597
 
  []
 
-<images/nodes.png, id=478, 1093.83656pt x 440.39531pt>
+<images/diegoMap.png, id=550, 325.215pt x 277.035pt>
+File: images/diegoMap.png Graphic file (type png)
+ <use images/diegoMap.png>
+Package pdftex.def Info: images/diegoMap.png used on input line 611.
+(pdftex.def)             Requested size: 226.48395pt x 192.934pt.
+
+[17 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/BuildingMap+keyboard.png>]
+<images/nodes.png, id=564, 1093.83656pt x 440.39531pt>
 File: images/nodes.png Graphic file (type png)
  <use images/nodes.png>
-Package pdftex.def Info: images/nodes.png used on input line 549.
+Package pdftex.def Info: images/nodes.png used on input line 616.
 (pdftex.def)             Requested size: 362.37569pt x 145.89537pt.
 
-[16 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/BuildingMap+keyboard.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineer
-ing 2 (ROS)/Report/images/nodes.png>]
-<images/amcl_localization.png, id=487, 722.7pt x 542.025pt>
+[18 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/diegoMap.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/
+Report/images/nodes.png>]
+<images/amcl_localization.png, id=571, 722.7pt x 542.025pt>
 File: images/amcl_localization.png Graphic file (type png)
 
 <use images/amcl_localization.png>
-Package pdftex.def Info: images/amcl_localization.png used on input line 582.
+Package pdftex.def Info: images/amcl_localization.png used on input line 649.
 (pdftex.def)             Requested size: 362.37569pt x 271.78099pt.
- [17 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
-es/amcl_localization.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 609--610
+
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--613
+Underfull \hbox (badness 10000) in paragraph at lines 679--680
+
+ []
+
+[19 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/amcl_localization.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 681--682
+
+ []
+
+<images/turtlebotCollision1.jpg, id=583, 963.6pt x 541.02126pt>
+File: images/turtlebotCollision1.jpg Graphic file (type jpg)
+
+<use images/turtlebotCollision1.jpg>
+Package pdftex.def Info: images/turtlebotCollision1.jpg used on input line 683.
+
+(pdftex.def)             Requested size: 226.48395pt x 127.15651pt.
+
+<images/turtlebotCollision3.jpg, id=584, 963.6pt x 541.02126pt>
+File: images/turtlebotCollision3.jpg Graphic file (type jpg)
+
+<use images/turtlebotCollision3.jpg>
+Package pdftex.def Info: images/turtlebotCollision3.jpg used on input line 684.
+
+(pdftex.def)             Requested size: 226.48395pt x 127.15651pt.
+
+Overfull \hbox (16.90002pt too wide) in paragraph at lines 683--686
+[][] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--615
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 618--619
+Underfull \hbox (badness 10000) in paragraph at lines 695--696
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 647--648
-
- []
-
-<images/costmap.png, id=510, 821.0675pt x 716.6775pt>
+[20 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/turtlebotCollision1.jpg> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineeri
+ng 2 (ROS)/Report/images/turtlebotCollision3.jpg>]
+<images/costmap.png, id=589, 821.0675pt x 716.6775pt>
 File: images/costmap.png Graphic file (type png)
  <use images/costmap.png>
-Package pdftex.def Info: images/costmap.png used on input line 660.
+Package pdftex.def Info: images/costmap.png used on input line 725.
 (pdftex.def)             Requested size: 226.48395pt x 197.6829pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--667
+Underfull \hbox (badness 10000) in paragraph at lines 731--732
 
  []
 
-<images/inflation.png, id=511, 653.3208pt x 429.2838pt>
+<images/inflation.png, id=590, 653.3208pt x 429.2838pt>
 File: images/inflation.png Graphic file (type png)
 
 <use images/inflation.png>
-Package pdftex.def Info: images/inflation.png used on input line 669.
-(pdftex.def)             Requested size: 317.07614pt x 208.33994pt.
- [19 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
-es/costmap.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/
-Report/images/inflation.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 679--682
+Package pdftex.def Info: images/inflation.png used on input line 734.
+(pdftex.def)             Requested size: 452.9679pt x 297.63411pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 739--740
 
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 784--785
+[21 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/costmap.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/R
+eport/images/inflation.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 741--743
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 784--785
+Underfull \hbox (badness 10000) in paragraph at lines 746--749
 
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 807--808
+
+Underfull \hbox (badness 10000) in paragraph at lines 751--752
 
  []
 
-<images/turtlebotTeleopApp.png, id=575, 523.20468pt x 161.85469pt>
+<images/nav_screen.png, id=597, 287.57437pt x 237.88875pt>
+File: images/nav_screen.png Graphic file (type png)
+
+<use images/nav_screen.png>
+Package pdftex.def Info: images/nav_screen.png used on input line 754.
+(pdftex.def)             Requested size: 226.48395pt x 187.36014pt.
+ [22 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/nav_screen.png>] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 862--863
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 862--863
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 885--886
+
+ []
+
+[24] <images/turtlebotTeleopApp.png, id=676, 523.20468pt x 161.85469pt>
 File: images/turtlebotTeleopApp.png Graphic file (type png)
 
 <use images/turtlebotTeleopApp.png>
-Package pdftex.def Info: images/turtlebotTeleopApp.png used on input line 816.
+Package pdftex.def Info: images/turtlebotTeleopApp.png used on input line 894.
 (pdftex.def)             Requested size: 226.48395pt x 70.06293pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 845--846
+Underfull \hbox (badness 10000) in paragraph at lines 924--925
 
  []
 
 
-Overfull \hbox (9.46767pt too wide) in paragraph at lines 847--849
+Overfull \hbox (9.46767pt too wide) in paragraph at lines 926--928
 []\OT1/ptm/m/n/10 These ones al-low us to launch the last two bringup launch fi
 les. This is ex-actly what con-tains the \OT1/ptm/b/n/10 bringup.concert
  []
 
-[22 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/turtlebotTeleopApp.png>]
-<images/twoMasters.png, id=598, 1087.06125pt x 359.84438pt>
+<images/twoMasters.png, id=677, 1087.06125pt x 359.84438pt>
 File: images/twoMasters.png Graphic file (type png)
 
 <use images/twoMasters.png>
-Package pdftex.def Info: images/twoMasters.png used on input line 859.
+Package pdftex.def Info: images/twoMasters.png used on input line 938.
 (pdftex.def)             Requested size: 434.81679pt x 143.9352pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 862--865
+ [25 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/imag
+es/turtlebotTeleopApp.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 941--944
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 880.
-[23 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
-s/twoMasters.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 880.
+<images/AndroidApp.png, id=691, 1284.8pt x 722.7pt>
+File: images/AndroidApp.png Graphic file (type png)
+
+<use images/AndroidApp.png>
+Package pdftex.def Info: images/AndroidApp.png used on input line 955.
+(pdftex.def)             Requested size: 317.07614pt x 178.34775pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 964--965
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 970--971
+
+ []
+
+[26 <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS)/Report/image
+s/twoMasters.png> <C:/Users/EpicFailure/Desktop/bsc2/Robotic Engineering 2 (ROS
+)/Report/images/AndroidApp.png>] [27] [28] [29] [30] [31] [32] [33]
+Overfull \hbox (8.64772pt too wide) in paragraph at lines 1155--1156
+[]\OT1/ptm/m/n/10 Turtlebot-Android Pair-ing http://wiki.ros.org/turtlebot[]and
+roid/Tutorials/hydro/Turtlebot-Android%20Pairing 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1161.
+[34]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1161.
 
 ("C:\Users\EpicFailure\Desktop\bsc2\Robotic Engineering 2 (ROS)\Report\ros_repo
 rt.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 880.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 880.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1161.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1161.
+
 Package rerunfilecheck Info: File `ros_report.out' has not changed.
-(rerunfilecheck)             Checksum: 53233F2A450E243CB04246BFCE195B82;4058.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 880.
+(rerunfilecheck)             Checksum: 16F9AA556A5B7633681D8B75BCB19CA1;4718.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1161.
  ) 
 Here is how much of TeX's memory you used:
- 9395 strings out of 493921
- 133559 string characters out of 3147264
- 282955 words of memory out of 3000000
- 12257 multiletter control sequences out of 15000+200000
- 28488 words of font info for 76 fonts, out of 3000000 for 9000
+ 9747 strings out of 493921
+ 138988 string characters out of 3147264
+ 323955 words of memory out of 3000000
+ 12427 multiletter control sequences out of 15000+200000
+ 33561 words of font info for 78 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 32i,6n,49p,902b,1880s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,6n,49p,902b,1884s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on ros_report.pdf (23 pages, 1660131 bytes).
+ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/couri
+er/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ros_report.pdf (34 pages, 2539706 bytes).
 PDF statistics:
- 704 PDF objects out of 1000 (max. 8388607)
- 289 named destinations out of 1000 (max. 500000)
- 504 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 992 PDF objects out of 1000 (max. 8388607)
+ 462 named destinations out of 1000 (max. 500000)
+ 617 words of extra memory for PDF output out of 10000 (max. 10000000)
 

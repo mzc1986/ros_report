@@ -9,13 +9,13 @@
 \BOOKMARK [3][-]{subsubsection.1.2.6}{Semantic Goals}{subsection.1.2}% 9
 \BOOKMARK [2][-]{subsection.1.3}{Setting up the Network}{section.1}% 10
 \BOOKMARK [2][-]{subsection.1.4}{Testing with the fake and the real Turtlebot}{section.1}% 11
-\BOOKMARK [2][-]{subsection.1.5}{Goal 1 Basic Motion of Mobile Base}{section.1}% 12
+\BOOKMARK [2][-]{subsection.1.5}{Goal 1 : Basic Motion of Mobile Base}{section.1}% 12
 \BOOKMARK [3][-]{subsubsection.1.5.1}{From command prompt}{subsection.1.5}% 13
 \BOOKMARK [3][-]{subsubsection.1.5.2}{By using a node}{subsection.1.5}% 14
-\BOOKMARK [2][-]{subsection.1.6}{Goal 2 = Advanced Motion of Mobile Base}{section.1}% 15
+\BOOKMARK [2][-]{subsection.1.6}{Goal 2 : Advanced Motion of Mobile Base}{section.1}% 15
 \BOOKMARK [3][-]{subsubsection.1.6.1}{Dead Reckoning}{subsection.1.6}% 16
-\BOOKMARK [2][-]{subsection.1.7}{Goal 3 = Navigating a Square using Twist+Odometry}{section.1}% 17
-\BOOKMARK [2][-]{subsection.1.8}{Goal 4 = Navigation with Path Planning move\137base}{section.1}% 18
+\BOOKMARK [2][-]{subsection.1.7}{Goal 3 : Navigating a Square using Twist+Odometry}{section.1}% 17
+\BOOKMARK [2][-]{subsection.1.8}{Goal 4 : Navigation with Path Planning move\137base}{section.1}% 18
 \BOOKMARK [1][-]{section.2}{Part 2 - Planar Laser RangeFinder}{}% 19
 \BOOKMARK [2][-]{subsection.2.1}{RP-LIDAR}{section.2}% 20
 \BOOKMARK [2][-]{subsection.2.2}{Integration on Turtlebot2}{section.2}% 21
@@ -38,14 +38,25 @@
 \BOOKMARK [3][-]{subsubsection.3.5.2}{Path Planning}{subsection.3.5}% 38
 \BOOKMARK [3][-]{subsubsection.3.5.3}{Move\137base package}{subsection.3.5}% 39
 \BOOKMARK [3][-]{subsubsection.3.5.4}{Cost Map}{subsection.3.5}% 40
-\BOOKMARK [3][-]{subsubsection.3.5.5}{Global Planner}{subsection.3.5}% 41
-\BOOKMARK [3][-]{subsubsection.3.5.6}{Local Planner}{subsection.3.5}% 42
-\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 43
-\BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 44
-\BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 45
-\BOOKMARK [2][-]{subsection.4.3}{Androidn Teleoperation : Pairing through a public master}{section.4}% 46
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Android Basics}{subsection.4.3}% 47
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Preparing the Device}{subsection.4.3}% 48
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Different bringup}{subsection.4.3}% 49
-\BOOKMARK [3][-]{subsubsection.4.3.4}{Concert}{subsection.4.3}% 50
-\BOOKMARK [3][-]{subsubsection.4.3.5}{Conclusion}{subsection.4.3}% 51
+\BOOKMARK [3][-]{subsubsection.3.5.5}{Cost Map Value :}{subsection.3.5}% 41
+\BOOKMARK [3][-]{subsubsection.3.5.6}{Inflation Function :}{subsection.3.5}% 42
+\BOOKMARK [3][-]{subsubsection.3.5.7}{Global Planner}{subsection.3.5}% 43
+\BOOKMARK [3][-]{subsubsection.3.5.8}{Local Planner}{subsection.3.5}% 44
+\BOOKMARK [2][-]{subsection.3.6}{Navigation in action :}{section.3}% 45
+\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 46
+\BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 47
+\BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 48
+\BOOKMARK [2][-]{subsection.4.3}{Android Teleoperation}{section.4}% 49
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Android Code Explanation}{subsection.4.3}% 50
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Preparing the Device}{subsection.4.3}% 51
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Different bringup}{subsection.4.3}% 52
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Concert}{subsection.4.3}% 53
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Possible extension}{subsection.4.3}% 54
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 55
+\BOOKMARK [1][-]{section.6}{Appendix}{}% 56
+\BOOKMARK [2][-]{subsection.6.1}{Appendix 1}{section.6}% 57
+\BOOKMARK [2][-]{subsection.6.2}{Appendix 2}{section.6}% 58
+\BOOKMARK [2][-]{subsection.6.3}{Appendix 3}{section.6}% 59
+\BOOKMARK [2][-]{subsection.6.4}{Appendix 4}{section.6}% 60
+\BOOKMARK [2][-]{subsection.6.5}{Appendix 5}{section.6}% 61
+\BOOKMARK [1][-]{section.7}{References}{}% 62

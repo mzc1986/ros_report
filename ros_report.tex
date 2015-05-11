@@ -52,8 +52,30 @@
   tabsize=3
 }
 
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+{\noindent\Huge\bfseries Robotic Engineering 2:\\ ROS-Turtlebot Motion Control and Navigation}\\[2\baselineskip] % Title
+{\large \textit{11th May, 2015}}\\[4\baselineskip] % Tagline or further description
+{\Large \textsc{ak assad\\ mashruf chowdhury\\yanik porto}} % Author name
+
+\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+{\noindent Computer Vision \& Robotics,\\University of Bourgogne, France}\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
 \begin{document}
-\title{Robotics Project: ROS-Turtlebot Motion Control $\&$ Navigation} \author{Yanik Porto \and Mashruf Zaman \and AK Assad} \date{\today}
+\titleGM
+
+\title{Robotics Engineering 2: ROS-Turtlebot Motion Control and Navigation} \author{ AK Assad \and Mashruf Chowdhury \and Yanik Porto} \date{\today}
 \maketitle
 
 \lstset{language=Python}% Set your language (you can change the language for each code-block optionally)
@@ -81,6 +103,7 @@ Controlling a mobile robot can be done at a number of levels and ROS provides me
 
 \begin{center}
 \includegraphics[width=0.2\textwidth]{images/motion_control.png}\\
+\textit{Levels of motion control}
 \end{center}
 
 \subsubsection{Motors, Wheels and Encoders}
@@ -132,7 +155,7 @@ These commands will add the export lines to the system bashrc file so they will 
 \subsection{Testing with the fake and the real Turtlebot}
 The programs can be tested both in a simulated environment and in the real robot. However, when testing the real robot using the current configuration of the kobuki base in the turtlebot, it is necessary to remap the topic $\textbf{/mobile\_base/commands/velocity}$ to $/\textbf{cmd\_vel}$. In order do this, a launch file is created to remap this topic, in fact in every launch file we changed the topic like this.
 
-\subsection{Goal 1 Basic Motion of Mobile Base}
+\subsection{Goal 1 : Basic Motion of Mobile Base}
 
 We can do this in two way - from command prompt or by using a node. We see both way - 
 \subsubsection{From command prompt}
@@ -218,11 +241,12 @@ by not using the odometry data in our script. Our script based only on time and 
 While the odometry data will not match the real motion exactly, 
 it should give us a better result if we use it. We shall see it in the next step
 
-\subsection{Goal 2 = Advanced Motion of Mobile Base}
-let's assume that we have some data from the laser in the form of distances from the laser's center point. In other words, we have some data in the \textbf{``base\_laser"} coordinate frame. Now suppose we want to take this data and use it to help the mobile base avoid obstacles in the world. To do this successfully, we need a way of transforming the laser scan we've received from the \textbf{``base\_laser"} frame to the \textbf{``base\_link"} frame. In essence, we need to define a relationship between the \textbf{``base\_laser"} and \textbf{``base\_link"} coordinate frames.\\
+\subsection{Goal 2 : Advanced Motion of Mobile Base}
+Let's assume that we have some data from the laser in the form of distances from the laser's center point. In other words, we have some data in the \textbf{``base\_laser"} coordinate frame. Now suppose we want to take this data and use it to help the mobile base avoid obstacles in the world. To do this successfully, we need a way of transforming the laser scan we've received from the \textbf{``base\_laser"} frame to the \textbf{``base\_link"} frame. In essence, we need to define a relationship between the \textbf{``base\_laser"} and \textbf{``base\_link"} coordinate frames.\\
 
 \begin{center}
 \includegraphics[width=\textwidth]{images/simple_robot.png}\\
+\textit{Conversion between coordinate frames}
 \end{center}
 
 Such is the case for the turtlebot Odometry data we use to move the robot.
@@ -296,36 +320,73 @@ Since the robot is performing a very simple task, the navigation error is slight
 
 \begin{center}
 \includegraphics[width=\textwidth]{images/odom_out_and_back.jpg}\\
+\textit{Odometry based out and back on Turtlebot}
 \end{center}
 
 \subsubsection{Dead Reckoning}
 Even small amount of error in the robot odometry data accumulates over time. Hence a robot navigating only using internal motion data and without any reference to external landmarks will grow on it's mistakes and eventually be completely lost. This is knows as Dead Reckoning. \\
 We can improve this for our turtlebot using map and SLAM.
 
-\subsection{Goal 3 = Navigating a Square using Twist+Odometry}
+\subsection{Goal 3 : Navigating a Square using Twist+Odometry}
 In a similar way to the previous Goal, in Goal 3 the robot navigates through a square path, using both Twist and Odometry messages.
 
-However, this time we will attempt to move the robot in a square by setting four waypoints, one at each corner. At the end of the run, we can see that the errors accumulated in odometry are more visible:
+There are the commands we use to navigate using nav\_square.py script
+
+\begin{lstlisting}[frame=single]
+Turtlebot Bringup:
+$roslaunch turtlebot_le2i remap_rplidar_minimal.launch (Bring up turtlebot)
+Combined odometry data
+$roslaunch rbx1_bringup odom_ekf.launch
+Visualization
+$rosrun rviz rviz -d `rospack find rbx1_nav`/nav.rviz
+Move in a square:
+$rosrun rbx1_nav nav_square.py
+\end{lstlisting}
+
+The nav\_square.py algorithm is nearly identical to the odometry-based out-and-back algorithm. The only difference is that it we now send the robot along four 1 meter legs using 90 degree rotations instead of two 1 meter legs using 180 rotations.
+
+At the end of the run, we can see that the errors accumulated in odometry are visible, it didn't move in a perfect square:
 
 \begin{center}
 \includegraphics[width=\textwidth]{images/square_py.jpg}\\
+\textit{Navigating a square using Twist+Odometry}
 \end{center}
 
-\subsection{Goal 4 = Navigation with Path Planning move\_base}
-ROS provides the move\_base package that allows us to specify a target position and orientation of the robot with respect to some frame of reference.
+\subsection{Goal 4 : Navigation with Path Planning move\_base}
+ROS provides the move\_base package that allows us to specify a target position and orientation of the robot with respect to some frame of reference.\\
 
-Following figure summarizes how the move\_base path planner works. On the bottom left of figure is a base controller node for low level motion control. on the top right is the map server which provides a map of environment.
+To use move\_base package, it requires a map of the environment and the control points where the robot moves to. A launch file is created to load a map into a map\_server node. In our case we used a blank map. A node is created to append control points into the blank map.\\
+
+Following figure summarizes how the move\_base path planner works. On the bottom left of figure is a base controller node for low level motion control. on the top right is the map server which provides a map of environment.\\\\
 
 \begin{center}
 \includegraphics[width=\textwidth]{images/overview_small.png}
+\textit{A general scheme of move\_base path planner}
 \end{center}
+
+There are the commands we use to navigate using move\_base
+
+\begin{lstlisting}[frame=single]
+Turtlebot Bringup:
+$roslaunch turtlebot_le2i remap_rplidar_minimal.launch (Bring up turtlebot)
+Combined odometry data
+$roslaunch rbx1_bringup odom_ekf.launch
+Launch planner (move_base) with a blank map 
+$roslaunch rbx1_nav tb_move_base_blank_map.launch
+Visualization
+$rosrun rviz rviz -d `rospack find rbx1_nav`/nav.rviz
+Move in a square trajectory according to waypoints:
+$rosrun rbx1_nav move_base_square.py
+\end{lstlisting}
 
 \begin{center}
 \includegraphics[width=\textwidth]{images/move_base_square.jpg}\\
+\textit{Moving using four waypoints in a square using move\_base}
 \end{center}
 
 \textbf{A video of this movement can be seen here:}\\
 \fbox{\url{https://www.youtube.com/watch?v=5e61iTaRLl0}}
+
 
 \section{Part 2 - Planar Laser RangeFinder}
 
@@ -467,6 +528,7 @@ $ roslaunch rplidar_ros view_rplidar.launch
 This scanner will be used here, for the application of general simultaneous localization and mapping (SLAM).
 
 \section{Part 3 - Navigation $\&$ Localization}
+
 \begin{tabbing}
 \hspace{1cm}\=\hspace{1cm}\=\kill
 Three essential ROS packages that make up the core of navigation stack:	\\
@@ -546,6 +608,11 @@ map\_saver generates the following files in the directory:\\
 \end{tabbing}
 
 \begin{center}
+\includegraphics[width=0.5\textwidth]{images/diegoMap.png}\\
+\textit{my\_map.pgm}
+\end{center}
+
+\begin{center}
 \includegraphics[width=0.8\textwidth]{images/nodes.png}
 \end{center}
 
@@ -597,7 +664,7 @@ Following steps, been used to run navigation \\
 on the turtlebot netbook:
 \begin{lstlisting}[frame=single]
 $ roslaunch turtlebot_le2i remap_rplidar_minimal.launch
-$ roslaunch rbx1_nav tb_demo_amcl.launch map:=arena.yaml
+$ roslaunch rbx1_nav tb_demo_amcl.launch map:=my_map.yaml
 \end{lstlisting}
 
 on the workstation : 
@@ -613,38 +680,36 @@ Path planning is based on WHERE am I and HOW to go there technique. To move from
 
 At the first try, the turtlebot was not able to reach its destination due to a L shape obstacle in the middle, the turtlebot continuously stacked and collide into the edge of the wall. After investigation, it is discovered that robots inflation is the factor in order to run the turtlebot smoothly in the arena. In order to fix the issues, it is very important to go through all the files contained by move\_base package. Using the values of local cost map, global cost map and the robot footprint, 2D\_Nav\_Goal determines the path and distance in order to reach the goal. \\
 
+\includegraphics[width=0.5\textwidth]{images/turtlebotCollision1.jpg}
+\includegraphics[width=0.5\textwidth]{images/turtlebotCollision3.jpg}
+\\
+
+\begin{center}
+\textit{Example of collisions}
+\end{center}
+
 \subsubsection{Move\_base package}
 
 The move\_base package provides an implementation of an action that, given a goal in the world, will attempt to reach it with a mobile base. The move\_base node links together a global and local planner to accomplish its global navigation task. It supports any global planner adhering to the \textbf{nav\_core::BaseGlobalPlanner} interface specified in the nav\_core package and any local planner adhering to the \textbf{nav\_core::BaseLocalPlanner} interface specified in the nav\_corepackage. The move\_base node also maintains two costmaps, one for the global planner, and one for a local planner that are used to accomplish navigation tasks.\\
 
 Move\_base nodes requires four configuration files before it can run. These files defines a number of parameters related to the cost of running into obstacle, the radius of the robot, how fast the robot moves and how far the path planner should looks. \\
 
-The four configuration files can be found in the \textbf{config} subdirectory of the \textbf{rbx1\_nav} package and are called: \\
+The four configuration files can be found in the \textbf{config} subdirectory of the \textbf{rbx1\_nav} package and are called: 
 
-base\_local\_planner\_params.yaml
-\begin{lstlisting}[frame=single]
-FILES
-\end{lstlisting}
-costmap\_common\_params.yaml
-\begin{lstlisting}[frame=single]
-FILES
-\end{lstlisting}
+\begin{tabbing}
+- base\_local\_planner\_params.yaml (see Appendix 1) \\
+- costmap\_common\_params.yaml (see Appendix 2) \\
+- global\_costmap\_params.yaml (see Appendix 3) \\
+- local\_costmap\_params.yaml (see Appendix 4) \\
+\end{tabbing}
 
-global\_costmap\_params.yaml
-\begin{lstlisting}[frame=single]
-FILES
-\end{lstlisting}
 
-local\_costmap\_params.yaml 
-\begin{lstlisting}[frame=single]
-FILES
-\end{lstlisting}
 
 \subsubsection{Cost Map}
 
 Cost map is a data structure that represents places that are safe for the robot to be in a grid of cell. It is based on the occupancy grid map of the environment and user specified inflation radius. There are two types of costmaps in ROS: Global costmap is used for global navigation and Local costmap is used for local navigation.
 
-\underline{\textbf{Cost Map Value :}}\\
+\subsubsection{Cost Map Value :}
 
 \begin{tabbing}
 \hspace{1cm}\=\hspace{1cm}\=\kill
@@ -662,17 +727,19 @@ Each cell in the costmap has an integer value in the range [0, 255].There are 5 
 \end{center}
 
 
-\underline{\textbf{Inflation Function :}}\\
+\subsubsection{Inflation Function :}
 Inflation is the process of propagating cost values out from occupied cells that decrease with distance. A brief explanation of inflation is given below:\\
 
 \begin{center}
-\includegraphics[width=0.7\textwidth]{images/inflation.png}\\
+\includegraphics[width=\textwidth]{images/inflation.png}\\
 \end{center}
 
 \subsubsection{Global Planner}
 
+Global planner is based on static global cost map, start point and end point. As discussed earlier the cost map, depending on the cost, a map called global cost map calculated in order to create a global plan.   \\
+
 Map + Costs = Global Cost Map \\
-Global Cost Map + Start + Target = Global Plan (way points)
+Global Cost Map + Start + Target = Global Plan (way points) \\
 
 \subsubsection{Local Planner}
 
@@ -680,8 +747,18 @@ Global map is static and using only global map can create problems especially wh
 For the local path planner cost is calculated as below:
 Cost = path\_distance\_bias * (distance to path from the endpoint of the trajectory in map cells or meters depending on the meter\_scoring parameter) + goal\_distance\_bias * (distance to local goal from the endpoint of the trajectory in map cells or meters depending on the meter\_scoring parameter) + occdist\_scale * (maximum obstacle cost along the trajectory in obstacle cost (0-254)).\\
 
-\underline{\textbf{Navigation in action :}}\\
-The turtlebot navigation is tested using different initial pose and different goal pose. Following video shows the turtlebot in the arena moving from one side to another using 2D\_nav\_goal.
+\subsection{Navigation in action :}
+The turtlebot navigation is tested using different initial pose and different goal pose. Following video shows the turtlebot in the arena moving from one side to another using 2D\_nav\_goal. \\
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/nav_screen.png}\\
+\textit{Example of navigation}
+\end{center}
+
+Here is the result of the navigation in video: 
+\begin{lstlisting}[frame=single]
+https://www.youtube.com/watch?v=uNPqKQI8f8o
+\end{lstlisting}
 
 \section{Part 4 - Controlling with Android and Others}
 
@@ -712,11 +789,11 @@ $ roslaunch turtlebot_follower follower.launch (Start follower demo)
 Now the Turtlebot detects and follows the person/obstacle in front of it.
 [link of the video]
 
-\subsection{Androidn Teleoperation : Pairing through a public master}
+\subsection{Android Teleoperation}
 
-\subsubsection{Android Basics}
+\subsubsection{Android Code Explanation}
 We were able to control our turtlebot using Android Teleop application which also gives a video feedback.
-We installed necessary Android development environment in our workstations and ran basic Android Hello World application. 
+We installed necessary Android development environment in our workstations and ran basic Android application.
 Following is the code and explanation of how the Android Teleop works:
 
 \begin{lstlisting}[frame=single] 
@@ -751,6 +828,7 @@ We need a view, which is a \textbf{RosCameraPreviewView}. This view will display
 
 Then we fill in the OnCreate() function, which is called when the app is opened. We may want to retrieve information from the last time the app was opened, which is where the savedInstanceState comes in. This is also where we can create views and set up the app's appearance. Later we'll configure this more from the activity\_main.xml that defines the app layout. We can retrieve information from that file. Right now it just contains default information, but we'll change it later.
 
+\newpage
 \begin{lstlisting}[frame=single] 
  @Override
     protected void init(NodeMainExecutor nodeMainExecutor) {
@@ -836,7 +914,8 @@ There are three different ways to bringup the turtlebot :\\\\
 
 \subsubsection{Concert}
 
-What will be used for controlling with Android is the following statement : 
+What will be used for controlling with Android is the following statement : \\
+on the turtlebot connected to the workstation with the same Wi-Fi as the Android Device : 
 \begin{lstlisting}[frame=single]
 $ rocon_launch turtlebot_bringup bringup.concert
 \end{lstlisting}
@@ -872,9 +951,211 @@ In the application, you need to enter the public master, so you need to write th
 http://192.168.0.100:11311/ 
 \end{lstlisting}
 
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/AndroidApp.png}\\
+\textit{ScreenShot of the running application}\\
+\end{center}
+
 \textbf{Here is the video of the result : }\\
 \fbox{\url{https://www.youtube.com/watch?v=pBYmtod4o18}}
  
-\subsubsection{Conclusion}
+\subsubsection{Possible extension}
+
+Multi-Master Concert: After successfully paired up with android device, an approach taken to create a multi-master concert launch files in order to use RVIZ in the PC. Goal was to make custom concert file to bring up the turtlebot with RPLIDAR minimum launch with android support. If the plan successfully implemented, while the turtlebot connected with android device, RVIZ could be run in the PC to view the navigation. \\
+
+Although the custom concert fired up without any error, it failed to pair up with android device. Neither the RVIZ ran in the PC. For the limitation of the time it wasn’t possible to investigate further. Custom concert files are attached in appendix 5. 
+
+\section{Conclusion}
+
+Using RPLidar with the turtlebot is a very economical way to implement a cost effective autonomous navigation solution.  Although RPLidar scan data is not highly accurate, it has been successfully implanted in the navigation process. The Android app that was used for the android part is no longer available for download from google play store. After a brief communication between the team and Yujin Robot, it is clear that OSRF is not  interested in building or updating any android app for ROS Hydro.  Indigo version of application by yujin robot is available to use. So for further android based development, it is highly recommended to use ROS indigo. \\
+
+\newpage
+
+\section{Appendix}
+
+\subsection{Appendix 1}
+
+\underline{\textbf{base\_local\_planner\_params}}
+\begin{lstlisting}[frame=single]
+controller_frequency: 3.0 
+recovery_behavior_enabled: false 
+clearing_rotation_allowed: false 
+
+TrajectoryPlannerROS: 
+   max_vel_x: 0.3 
+   min_vel_x: 0.05 
+   max_vel_y: 0.0  # zero for a differential drive robot 
+   min_vel_y: 0.0 
+   max_rotational_vel: 1.0 
+   min_in_place_vel_theta: 0.5 
+   escape_vel: -0.1 
+   acc_lim_x: 2.5 
+   acc_lim_y: 0.0 # zero for a differential drive robot 
+   acc_lim_th: 3.2 
+
+   holonomic_robot: false 
+   yaw_goal_tolerance: 0.3 # about 6 degrees 
+   xy_goal_tolerance: 0.2  # 10 cm 
+   latch_xy_goal_tolerance: false 
+   pdist_scale: 0.8 # changed 
+   gdist_scale: 1.0 # changed 
+   meter_scoring: true 
+
+   heading_lookahead: 0.325 
+   heading_scoring: false 
+   heading_scoring_timestep: 0.8 
+   occdist_scale: 0.2 # changed to low 
+   oscillation_reset_dist: 0.05 
+   publish_cost_grid_pc: false 
+   prune_plan: true 
+
+   sim_time: 1.0 
+   sim_granularity: 0.025 
+   angular_sim_granularity: 0.025 
+   vx_samples: 8 
+   vy_samples: 0 # zero for a differential drive robot 
+   vtheta_samples: 20 
+   dwa: true 
+   simple_attractor: false
+\end{lstlisting}
+\newpage
+
+\subsection{Appendix 2}
+
+\underline{\textbf{costmap\_common\_params}}
+\begin{lstlisting}[frame=single]
+obstacle_range: 2.5 
+raytrace_range: 3.0 
+robot_radius: 0.22 # chngd 
+inflation_radius: 0.5 # chngd 
+max_obstacle_height: 0.6 
+min_obstacle_height: 0.0 
+observation_sources: scan 
+scan: {data_type: LaserScan, topic: /scan, marking: true, clearing: true, expected_update_rate: 0.0}
+\end{lstlisting}
+\newpage
+
+\subsection{Appendix 3}
+\underline{\textbf{global\_costmap}}
+\begin{lstlisting}[frame=single]
+   global_frame: /map 
+   robot_base_frame: /base_footprint 
+   update_frequency: 5.0 # chng frm 3 to 5 
+   publish_frequency: 0 #chngd to previous 0 
+   static_map: true 
+   rolling_window: false 
+   resolution: 0.1 
+   transform_tolerance: 1.0 
+   map_type: costmap
+\end{lstlisting}
+\newpage
+
+\subsection{Appendix 4}
+
+\underline{\textbf{local\_costmap}}
+\begin{lstlisting}[frame=single]
+   global_frame: /odom 
+   robot_base_frame: /base_footprint 
+   update_frequency: 3.0 # chngd frm 3.0 
+   publish_frequency: 1.0 # chngd frm 2.0 
+   static_map: false 
+   rolling_window: true 
+   width: 6.0 
+   height: 6.0 
+   resolution: 0.01 # chngd frm .01 
+   transform_tolerance: 1.0 
+   map_type: costmap
+\end{lstlisting}
+\newpage
+
+\subsection{Appendix 5}
+
+Customized concert ("bringup\_copy.concert") :
+\begin{lstlisting}[frame=single]
+<concert>
+    <launch package="turtlebot_bringup" name="paired_public.launch" port="11311"/>
+    <launch package="turtlebot_bringup" name="minimal_with_appmanager_copy.launch" port="11312"/>
+</concert>
+
+\end{lstlisting}
+
+"minimal\_with\_appmanager\_copy.launch" : 
+\begin{lstlisting}[frame=single]
+<launch>
+  <!-- Turtlebot -->
+  <arg name="base"       default="$(optenv TURTLEBOT_BASE kobuki)"/>  <!-- create, rhoomba -->
+  <arg name="battery"    default="$(optenv TURTLEBOT_BATTERY /sys/class/power_supply/BAT0)"/>  <!-- /proc/acpi/battery/BAT0 in 2.6 or earlier kernels-->
+  <arg name="stacks"     default="$(optenv TURTLEBOT_STACKS hexagons)"/>  <!-- circles, hexagons -->
+  <arg name="3d_sensor"  default="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
+  <arg name="simulation" default="$(optenv TURTLEBOT_SIMULATION true)"/>
+
+  <!-- App manager -->
+  <arg name="robot_name" default="$(optenv ROBOT_NAME turtlebot)"/>
+  <arg name="robot_type" default="$(optenv ROBOT_TYPE turtlebot)"/>
+  <!-- By default, we only tune into the pairing master's hub, so set the whitelist here for "Internal Hub" -->
+  <!-- To run concert mode, set an empty string or use your concert's hub name specifically -->
+  <!-- For concert mode, you should also disable the auto_invite in paired public.launch -->
+  <arg name="hub_whitelist" default="$(optenv ROBOT_HUB_WHITELIST Internal Hub)"/>
+  <arg name="rapp_lists" default="$(optenv RAPP_LIST rocon_apps/rocon.rapps;turtlebot_bringup/turtlebot.rapps)"/>
+  <arg name="robot_icon" default="turtlebot_bringup/turtlebot2.png"/>
+  <arg name="gateway_watch_loop_period" default="10"/> <!-- Polling period for multimaster advertising/flipping -->
+
+
+	<!-- Launch minimal.launch -->
+	<remap from="mobile_base/commands/velocity" to="cmd_vel" />	
+	<include file="$(find turtlebot_bringup)/launch/minimal.launch">
+		<arg name="3d_sensor" value="$(arg 3d_sensor)"/>
+		<arg name="simulation" value="$(arg simulation)"/>
+	</include>
+	
+	<!-- Create environment variable for rplidar with "rplidar" default value -->
+	<arg name="rplidar_sensor" default="$(optenv TURTLEBOT_LASER_SENSOR rplidar)"/>
+	
+	<!-- Set environment variable for rplidar -->
+	<include file="$(find turtlebot_le2i)/launch/includes/robot.launch.xml">
+		<arg name="base" value="$(arg base)" />
+		<arg name="stacks" value="$(arg stacks)" />
+		<arg name="rplidar_sensor" value="$(arg rplidar_sensor)"/>
+	</include>
+	
+	<!-- Launch rplidar -->
+	<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+
+  <!-- paired client for app manager -->
+  <include file="$(find rocon_app_manager)/launch/paired_private.launch">
+    <arg name="robot_name" value="$(arg robot_name)"/>
+    <arg name="robot_type" value="$(arg robot_type)"/>
+    <arg name="robot_icon" value="$(arg robot_icon)"/>
+    <arg name="rapp_lists" value="$(arg rapp_lists)"/>
+    <arg name="gateway_watch_loop_period" value="$(arg gateway_watch_loop_period)"/>
+    <arg name="disable_uuids" value="true"/>
+    <arg name="hub_whitelist" value="$(arg hub_whitelist)"/>
+  </include>
+</launch>
+\end{lstlisting}
+\newpage
+
+\section{References}
+
+\begin{enumerate}
+
+\item R. Patrick Goebel, ROS By Example, Version 1.03 for ROS Groovy: April 2013.
+
+\item http://wiki.ros.org/ApplicationsPlatform/Clients/Android/Tutorials/Getting Started
+
+\item Gmapping.http://wiki.ros.org/gmapping!
+
+\item E. M. Eppstain, move base Package Summary, wiki.ros.org, last edited 2012-10-18.\\
+http://wiki.ros.org/move\_base?distro=hydro
+
+\item Willow Garage. Turtlebot. http://www.willowgarage.com/turtlebot, 2008.
+
+\item RPLIDAR, Low Cost 360 degree 2D Laser Scanner (LIDAR) System, Introducion and Datasheet
+
+\item Turtlebot-Android Pairing http://wiki.ros.org/turtlebot\_android/Tutorials/hydro/Turtlebot-Android\%20Pairing
+
+\item Previous ROS Turtlebot report by Deepak Gurung, Jiang Cansen, Jilliam María 
+Farhat, Juan Manuel
+\end{enumerate}
 
 \end{document}
