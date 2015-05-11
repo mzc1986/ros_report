@@ -24,10 +24,28 @@
 \BOOKMARK [3][-]{subsubsection.2.2.3}{base\137laser\137link}{subsection.2.2}% 24
 \BOOKMARK [3][-]{subsubsection.2.2.4}{Displaying the data}{subsection.2.2}% 25
 \BOOKMARK [1][-]{section.3}{Part 3 - Navigation \046 Localization}{}% 26
-\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 27
-\BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.3}{Androidn Teleoperation : Pairing through a public master}{section.4}% 30
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Android Basics}{subsection.4.3}% 31
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Different bringup}{subsection.4.3}% 32
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Concert}{subsection.4.3}% 33
+\BOOKMARK [2][-]{subsection.3.1}{Map Creation}{section.3}% 27
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Mapping}{subsection.3.1}% 28
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Marking and Clearing}{subsection.3.1}% 29
+\BOOKMARK [3][-]{subsubsection.3.1.3}{SLAM}{subsection.3.1}% 30
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Gmapping}{subsection.3.1}% 31
+\BOOKMARK [2][-]{subsection.3.2}{SLAM Map Building with TurtleBot}{section.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Saving Map}{subsection.3.2}% 33
+\BOOKMARK [2][-]{subsection.3.3}{Localization}{section.3}% 34
+\BOOKMARK [2][-]{subsection.3.4}{Amcl}{section.3}% 35
+\BOOKMARK [2][-]{subsection.3.5}{Navigation and localization using a map and amcl}{section.3}% 36
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Point and click navigation using Rviz}{subsection.3.5}% 37
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Path Planning}{subsection.3.5}% 38
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Move\137base package}{subsection.3.5}% 39
+\BOOKMARK [3][-]{subsubsection.3.5.4}{Cost Map}{subsection.3.5}% 40
+\BOOKMARK [3][-]{subsubsection.3.5.5}{Global Planner}{subsection.3.5}% 41
+\BOOKMARK [3][-]{subsubsection.3.5.6}{Local Planner}{subsection.3.5}% 42
+\BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 43
+\BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 44
+\BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 45
+\BOOKMARK [2][-]{subsection.4.3}{Androidn Teleoperation : Pairing through a public master}{section.4}% 46
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Android Basics}{subsection.4.3}% 47
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Preparing the Device}{subsection.4.3}% 48
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Different bringup}{subsection.4.3}% 49
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Concert}{subsection.4.3}% 50
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Conclusion}{subsection.4.3}% 51

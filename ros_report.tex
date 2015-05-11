@@ -116,11 +116,11 @@ Finally, at the highest level of abstraction, motion goals are specified semanti
 
 The primary requirement for getting your TurtleBot running is connecting to a network so that we can operate it remotely. After both TurtleBot and Workstation is connected to a network, it is time to set ROS\_MASTER\_URI and ROS\_HOSTNAME. The ROS\_MASTER\_URI tells the rest of the nodes at which address they can find the ROS master.\\
 
-Here we setup the TurtleBot netbook as a ROS node and our Workstation as a ROS master. Before this is done, we need to determine the IP address of your TurtleBot netbook and Workstation. This can be found by typing ``ifconfig'' in a terminal. Our IP address are found under wlan0, and it's the numbers proceeding ``inet addr:''.
+Here we setup the TurtleBot netbook as a ROS Master and our Workstation as a ROS node. Before this is done, we need to determine the IP address of your TurtleBot netbook and Workstation. This can be found by typing ``ifconfig'' in a terminal. Our IP address are found under wlan0, and it's the numbers proceeding ``inet addr:''.
 
 \begin{lstlisting}[frame=single] 
-> echo export ROS_MASTER_URI=http://IP_OF_WORKSTATION:11311 >> ~/.bashrc
-> echo export ROS_HOSTNAME=IP_OF_TURTLEBOT >> ~/.bashrc
+> echo export ROS_MASTER_URI=http://IP_OF_TURTLEBOT:11311 >> ~/.bashrc
+> echo export ROS_HOSTNAME=IP_OF_WORKSTATION >> ~/.bashrc
 \end{lstlisting}
 For ROS to operate you need to have an instance of roscore running on the master. We type the following command in the master:
 
@@ -321,7 +321,7 @@ Following figure summarizes how the move\_base path planner works. On the bottom
 \end{center}
 
 \begin{center}
-\includegraphics[width=0.5\textwidth]{images/move_base.jpg}\\
+\includegraphics[width=\textwidth]{images/move_base_square.jpg}\\
 \end{center}
 
 \textbf{A video of this movement can be seen here:}\\
@@ -467,6 +467,221 @@ $ roslaunch rplidar_ros view_rplidar.launch
 This scanner will be used here, for the application of general simultaneous localization and mapping (SLAM).
 
 \section{Part 3 - Navigation $\&$ Localization}
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+Three essential ROS packages that make up the core of navigation stack:	\\
+\> - gmapping for creating map from RPlidar laser scan data \\
+\> - amcl for the localization using an existing map \\
+\> - move\_base for moving the robot to a goal within given reference frame \\
+\end{tabbing}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/overview_small.png}
+\end{center}
+
+\subsection{Map Creation}
+
+Although ROS based ROBOT’s can navigate in an unknown environment, it’s very ideal to create and use a map. In a known environment path planning/movement is much easier.  In the project, gmapping package was used to create a map with the help of teleop. \\
+
+\subsubsection{Mapping}
+	
+Learning maps is one of the fundamental problems in mobile robotics. Maps allow robots to efficiently carry out their tasks, such as localization, path planning, activity planning, etc. There are different ways to represent the world space, such as: Grid maps, Geometric maps, Voronoi graphs \\
+
+Occupancy Grid Map, Maps the environment as a grid of cells. Cell sizes typically range from 5 to 50 cm, each cell holds a probability value that the cell is occupied in the range [0,100], Unknown is indicated by -1, Usually unknown areas are areas that the robot sensors cannot detect (beyond obstacles)
+
+\begin{center}
+\includegraphics[width=0.3\textwidth]{images/arena1.png}\\
+White pixels represent free cells \\
+Black pixels represent occupied cells \\
+Gray pixels are in unknown state \\
+\end{center}
+
+\subsubsection{Marking and Clearing}
+
+The grid map is built using a process called \textbf{marking} and clearing. A marking operation inserts obstacle information into the map. A \textbf{clearing} operation removes obstacle information from the map. It consists of \textbf{raytracing} through a grid from the origin of the sensor outwards for each observation reported.
+
+\subsubsection{SLAM}
+\textbf{Simultaneous localization and mapping} (\textbf{SLAM}) is a technique used by robots to build up a map within an unknown environment while at the same time keeping track of their current location.
+
+\subsubsection{Gmapping}
+Gmapping (http://wiki.ros.org/gmapping) package provides laser-based SLAM as a ROS node called \textbf{slam\_gmapping}. It Uses the FastSLAM algorithm. It takes the laser scans and the odometry and builds a 2D occupancy grid map. It updates the map state while the robot moves.
+
+\subsection{SLAM Map Building with TurtleBot}
+
+In order to navigate and localization the turtlebot, first the map of the arena needs to be created. Turtlebot already got the essential updates in order to use gmapping package while it been used for the navigation purpose describe earlier.
+
+Following steps been used to create and save the map of arena:\\
+To launch the gmapping package\\
+on the TurtleBot :
+\begin{lstlisting}[frame=single] 
+$ roslaunch turtlebot_le2i rplidar_minimal.launch
+$ roslaunch rbx1_nav rplidar_gmapping_demo.launch
+\end{lstlisting}
+
+For launching rviz in order to view and save the map\\
+on the Workstation :
+\begin{lstlisting}[frame=single] 
+$ roslaunch turtlebot_rviz_launchers view_navigation.launch
+$ roslaunch turtlebot_teleop keyboard_teleop.launch
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/BuildingMap+keyboard.png}
+\end{center}
+
+\subsubsection{Saving Map}
+
+The robot needed to drive around using telop keyboard slowly to get the entire arena. This process is used few times to circle the arena in order to record better map. \textbf{map\_server} package is used by ROS to load and save maps. \\
+
+- Save the map to file:
+\begin{lstlisting}[frame=single] 
+$ rosrun map_server map_saver -f /tmp/my_map
+\end{lstlisting}
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+map\_saver generates the following files in the directory:\\
+\> \textbf{my\_map.pgm} – the map itself \\
+\> \textbf{my\_map.yaml} – the map’s metadata \\
+\end{tabbing}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/nodes.png}
+\end{center}
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+Some important fields:\\
+\>  – \textbf{resolution:} Resolution of the map, meters / pixel \\
+\>  – \textbf{origin:} The 2-D pose of the lower-left pixel in the map as (x, y, yaw) \\
+\>  – \textbf{occupied\_thresh:} Pixels with occupancy probability greater than this threshold are considered completely occupied. \\
+\> – \textbf{free\_thresh:} Pixels with occupancy probability less than this threshold are considered completely free. \\
+\end{tabbing}
+
+\subsection{Localization}
+
+Localization is the problem of estimating the pose of the robot relative to a map. Localization is not terribly sensitive to the exact placement of objects so it can handle small changes to the locations of objects. ROS uses the amcl package for localization. Before using the navigation, it’s important to understand how amcl pacakage works. 
+
+\subsection{Amcl}
+amcl is a probabilistic localization system for a robot moving in 2D. It implements the adaptive (or KLD-sampling) Monte Carlo localization approach, which uses a particle filter to track the pose of a robot against a known map. amcl takes in a laser-based map, laser scans, and transform messages, and outputs pose estimates. On startup, amcl initializes its particle filter according to the parameters provided. As defaults, if no parameters are set, the initial filter state will be a moderately sized particle cloud centered about (0,0,0).
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+Subscribed topics:\\
+\> - \textbf{scan} – Laser scans\\
+\> - \textbf{tf} – Transforms\\
+\> - \textbf{initialpose} – Mean and covariance with which to (re-) initialize the particle filter \\
+\> - \textbf{map} – the map used for laser-based localization \\
+
+Published topics:\\
+\> - \textbf{amcl\_pose} – Robot's estimated pose in the map, with covariance\\
+\> - \textbf{Particlecloud} – The set of pose estimates being maintained by the filter\\
+\end{tabbing}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/amcl_localization.png}\\
+\textit{The difference between odometry based localization and AMCL map localization}
+\end{center}
+
+\subsection{Navigation and localization using a map and amcl}
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+Navigating a robot in a map is done simply using amcl, existing map and Rviz. To run the navigation stack with amcl,  the following nodes needs to start: \\
+\> -\textbf{ map\_server }– for loading the map\\
+\> - \textbf{amcl} – for the localization system\\
+\> - \textbf{move\_base} – manages the navigation stack\\
+\end{tabbing}
+
+Following steps, been used to run navigation \\
+on the turtlebot netbook:
+\begin{lstlisting}[frame=single]
+$ roslaunch turtlebot_le2i remap_rplidar_minimal.launch
+$ roslaunch rbx1_nav tb_demo_amcl.launch map:=arena.yaml
+\end{lstlisting}
+
+on the workstation : 
+\begin{lstlisting}[frame=single]
+$ roslaunch turtlebot_rviz_launchers view_navigation.launch
+\end{lstlisting}
+
+\subsubsection{Point and click navigation using Rviz}
+After amcl bring up, the initial pose of the turtlebot is to be set, because amcl can’t do its own. To set the initial pose, just need to click on the “2D Pose Estimate” button in rviz. Then click on the point in the map where the robot is located. While holding down the mouse button, a large green arrow appears. The mouse then moved to orient the arrow to match the orientation of the robot, and then released. With the robots initial position set, it’s now possible to use the “2D Nav Goal” button in rviz to navigate goals of the turtlebot at different locations in the map of arena.\\
+
+\subsubsection{Path Planning}
+Path planning is based on WHERE am I and HOW to go there technique. To move from position A to position B turtlebot needs to know its initial position and path finding algorithm to reach its destination. ‘2D pose estimate’ uses the amcl package to set turtlebot position in the map. Path planning uses \textbf{Global plan} and \textbf{Local plan} to reach the goal. To understand the navigation it is very important to understand how both plan combined in order to reach the goal. \\
+
+At the first try, the turtlebot was not able to reach its destination due to a L shape obstacle in the middle, the turtlebot continuously stacked and collide into the edge of the wall. After investigation, it is discovered that robots inflation is the factor in order to run the turtlebot smoothly in the arena. In order to fix the issues, it is very important to go through all the files contained by move\_base package. Using the values of local cost map, global cost map and the robot footprint, 2D\_Nav\_Goal determines the path and distance in order to reach the goal. \\
+
+\subsubsection{Move\_base package}
+
+The move\_base package provides an implementation of an action that, given a goal in the world, will attempt to reach it with a mobile base. The move\_base node links together a global and local planner to accomplish its global navigation task. It supports any global planner adhering to the \textbf{nav\_core::BaseGlobalPlanner} interface specified in the nav\_core package and any local planner adhering to the \textbf{nav\_core::BaseLocalPlanner} interface specified in the nav\_corepackage. The move\_base node also maintains two costmaps, one for the global planner, and one for a local planner that are used to accomplish navigation tasks.\\
+
+Move\_base nodes requires four configuration files before it can run. These files defines a number of parameters related to the cost of running into obstacle, the radius of the robot, how fast the robot moves and how far the path planner should looks. \\
+
+The four configuration files can be found in the \textbf{config} subdirectory of the \textbf{rbx1\_nav} package and are called: \\
+
+base\_local\_planner\_params.yaml
+\begin{lstlisting}[frame=single]
+FILES
+\end{lstlisting}
+costmap\_common\_params.yaml
+\begin{lstlisting}[frame=single]
+FILES
+\end{lstlisting}
+
+global\_costmap\_params.yaml
+\begin{lstlisting}[frame=single]
+FILES
+\end{lstlisting}
+
+local\_costmap\_params.yaml 
+\begin{lstlisting}[frame=single]
+FILES
+\end{lstlisting}
+
+\subsubsection{Cost Map}
+
+Cost map is a data structure that represents places that are safe for the robot to be in a grid of cell. It is based on the occupancy grid map of the environment and user specified inflation radius. There are two types of costmaps in ROS: Global costmap is used for global navigation and Local costmap is used for local navigation.
+
+\underline{\textbf{Cost Map Value :}}\\
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+Each cell in the costmap has an integer value in the range [0, 255].There are 5 special symbols for cost values:\\
+\> - \textbf{NO\_INFORMATION} (255) - Reserved for cells where not enough information is sufficiently known\\
+\> - \textbf{LETHAL\_OBSTACLE} (254) - Indicates a collision causing obstacle was sensed in this cell\\
+\> - \textbf{INSCRIBED\_INFLATED\_OBSTACLE} (253) - Indicates no obstacle, but moving the center of the robot\\ to this location will result in a collision\\
+\> - \textbf{POSSIBLY CIRCUMSCRIBED} (128-252) – If the robot center lies in that location, then it depends\\ on the orientation of the robot whether it collides with an obstacle or not \\
+\> - \textbf{FREE\_SPACE} (0) - Cells where there are no obstacles and the moving the center of the robot to this\\ position will not result in a collision\\
+\end{tabbing}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/costmap.png}\\
+\textit{Example of cost map ros.wiki} \\
+\end{center}
+
+
+\underline{\textbf{Inflation Function :}}\\
+Inflation is the process of propagating cost values out from occupied cells that decrease with distance. A brief explanation of inflation is given below:\\
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/inflation.png}\\
+\end{center}
+
+\subsubsection{Global Planner}
+
+Map + Costs = Global Cost Map \\
+Global Cost Map + Start + Target = Global Plan (way points)
+
+\subsubsection{Local Planner}
+
+Global map is static and using only global map can create problems especially when dynamic objects or obstacles are placed in the map. 
+For the local path planner cost is calculated as below:
+Cost = path\_distance\_bias * (distance to path from the endpoint of the trajectory in map cells or meters depending on the meter\_scoring parameter) + goal\_distance\_bias * (distance to local goal from the endpoint of the trajectory in map cells or meters depending on the meter\_scoring parameter) + occdist\_scale * (maximum obstacle cost along the trajectory in obstacle cost (0-254)).\\
+
+\underline{\textbf{Navigation in action :}}\\
+The turtlebot navigation is tested using different initial pose and different goal pose. Following video shows the turtlebot in the arena moving from one side to another using 2D\_nav\_goal.
 
 \section{Part 4 - Controlling with Android and Others}
 
@@ -517,12 +732,91 @@ public class MainActivity extends RosActivity {
    
 \end{lstlisting}
    
-The MainActivity extends RosActivity. All ROS Android apps should extend this class to be compatible with the \textbf{android\_remocons interface}. Extending this class gives you some convenient ROS functionality/compatibility for free. RosActivity deals with initialising nodes, etc in Android.
+The MainActivity extends RosActivity. All ROS Android apps should extend this class to be compatible with the \textbf{android\_remocons interface}. Extending this class gives some convenient ROS functionality/compatibility for free. RosActivity deals with initialising nodes, etc in Android.
 
 We also make a \textbf{cameraId} in case there are multiple cameras, so we can keep track and switch between them. 
 
 We need a view, which is a \textbf{RosCameraPreviewView}. This view will display the images from the device's camera(s) on the screen. We imported that from an external library above. Our constructor can just be the default and call to the parent constructor.
-... ...
+
+\begin{lstlisting}[frame=single] 
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
+        rosCameraPreviewView = (RosCameraPreviewView) findViewById(R.id.ros_camera_preview_view);
+    }
+\end{lstlisting}
+
+Then we fill in the OnCreate() function, which is called when the app is opened. We may want to retrieve information from the last time the app was opened, which is where the savedInstanceState comes in. This is also where we can create views and set up the app's appearance. Later we'll configure this more from the activity\_main.xml that defines the app layout. We can retrieve information from that file. Right now it just contains default information, but we'll change it later.
+
+\begin{lstlisting}[frame=single] 
+ @Override
+    protected void init(NodeMainExecutor nodeMainExecutor) {
+        NodeConfiguration nodeConfiguration =
+                NodeConfiguration.newPublic(InetAddressFactory
+                .newNonLoopback().getHostAddress());
+        nodeConfiguration.setMasterUri(getMasterUri());
+        nodeMainExecutor.execute(rosCameraPreviewView, nodeConfiguration);
+        handy.post(sizeCheckRunnable);
+    }
+\end{lstlisting}
+
+This init() function comes from extending the RosActivity which helps us to handle the configuration of our ROS node(s) and other administration. We want to make sure our initial cameraId is zero. Then we connect up our view to a camera. So the app will start out showing and transmitting images from the "first" camera. We configure our connection to the "robot", netbook computer. When the app is started, we give it the ROS\_MASTER\_URI. The app uses this to connect to the netbook computer and the ROS master running on it. Once it has that information it can configure its node(s) and send images to the computer. Once the nodes have been initialized, we will setup the preview for the camera. We dont want to set the camera before the view is ready, so we run a repeating task to check the height and width. Once those have been set, we set the camera as well.
+
+\begin{lstlisting}[frame=single] 
+ @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            //....
+                rosCameraPreviewView.setCamera(Camera.open(cameraId));
+            //....    
+        return true;
+    }
+}
+\end{lstlisting}
+
+Then On Touch Event we set the rosCameraPreviewView to show images from a camera with the camera ID and show user a Toast message.
+
+In the AndroidManifest.xml file we define our package name and version number and also the minimum Android SDK requirements. Also we give the app various access to, for example access to the camera, the state of the wireless connection, etc. We also define the app icon, orientation and display name. Using intent-filters we decide how activities in our app can be accessed.
+
+There is a file generated in MyApplication/src/main/res/layout called activity\_main.xml. This file helps define how our app will look.\\\\
+
+\begin{lstlisting}[frame=single]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical" >
+
+    <org.ros.android.view.camera.RosCameraPreviewView
+            android:id="@+id/ros_camera_preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+</LinearLayout>
+\end{lstlisting}
+
+\subsubsection{Preparing the Device}
+You need to be \textbf{directly} connected to the robot with your Android Device. In our case, the network is named : 
+\begin{lstlisting}[frame=single]
+TURTLEBOT-E-5GHz
+\end{lstlisting}
+
+\underline{Note :} This is important to have an Android Device supporting 5GHz Wi-Fi, otherwise you need to set up the router with a 2.4 GHz.\\
+
+\begin{tabbing}
+\hspace{1cm}\=\hspace{1cm}\=\kill
+\> -Connect your device to this Wi-Fi.\\
+\> -Download \textbf{"Ros Teleop (Hydro)"} in the Play Store.\\
+\end{tabbing}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/turtlebotTeleopApp.png}
+\end{center}
+
+Now your device is ready.
 
 \subsubsection{Different bringup}
 
@@ -571,6 +865,18 @@ One is the \textbf{Private Master} : \\
 
 The other is the \textbf{Public Master} : \\
 \textbf{-Port:} 11311 \\
-\textbf{-Software:} This master runs another rocon gateway and a simple pairing script that assists the invitation of the private app\_manager and flipping the appropriate topics back and forth between the two masters. This one will be accessed by the android application. 
+\textbf{-Software:} This master runs another rocon gateway and a simple pairing script that assists the invitation of the private app\_manager and flipping the appropriate topics back and forth between the two masters. This one will be accessed by the android application.
+
+In the application, you need to enter the public master, so you need to write the following URI to find the turtlebot : 
+\begin{lstlisting}[frame=single]
+http://192.168.0.100:11311/ 
+\end{lstlisting}
+
+\textbf{Here is the video of the result : }
+\begin{lstlisting}[frame=single]
+https://www.youtube.com/watch?v=pBYmtod4o18
+\end{lstlisting}
+ 
+\subsubsection{Conclusion}
 
 \end{document}
