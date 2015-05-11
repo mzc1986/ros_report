@@ -497,7 +497,32 @@ $ roslaunch turtlebot_follower follower.launch (Start follower demo)
 Now the Turtlebot detects and follows the person/obstacle in front of it.
 [link of the video]
 
-\subsection{Android: Pairing through a public master}
+\subsection{Androidn Teleoperation : Pairing through a public master}
+
+\subsubsection{Android Basics}
+We were able to control our turtlebot using Android Teleop application which also gives a video feedback.
+We installed necessary Android development environment in our workstations and ran basic Android Hello World application. 
+Following is the code and explanation of how the Android Teleop works:
+
+\begin{lstlisting}[frame=single] 
+public class MainActivity extends RosActivity {
+    
+       private int cameraId = 0;
+       private RosCameraPreviewView rosCameraPreviewView;
+       private Handler handy = new Handler();
+    
+       public MainActivity() {
+           super("CameraTutorial", "CameraTutorial");
+      }
+   
+\end{lstlisting}
+   
+The MainActivity extends RosActivity. All ROS Android apps should extend this class to be compatible with the \textbf{android\_remocons interface}. Extending this class gives you some convenient ROS functionality/compatibility for free. RosActivity deals with initialising nodes, etc in Android.
+
+We also make a \textbf{cameraId} in case there are multiple cameras, so we can keep track and switch between them. 
+
+We need a view, which is a \textbf{RosCameraPreviewView}. This view will display the images from the device's camera(s) on the screen. We imported that from an external library above. Our constructor can just be the default and call to the parent constructor.
+... ...
 
 \subsubsection{Different bringup}
 

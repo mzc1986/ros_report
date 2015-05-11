@@ -27,6 +27,7 @@
 \BOOKMARK [1][-]{section.4}{Part 4 - Controlling with Android and Others}{}% 27
 \BOOKMARK [2][-]{subsection.4.1}{Testing a node - Auto Docking}{section.4}% 28
 \BOOKMARK [2][-]{subsection.4.2}{Testing a node - Turtlebot Follower}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.3}{Android: Pairing through a public master}{section.4}% 30
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Different bringup}{subsection.4.3}% 31
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Concert}{subsection.4.3}% 32
+\BOOKMARK [2][-]{subsection.4.3}{Androidn Teleoperation : Pairing through a public master}{section.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Android Basics}{subsection.4.3}% 31
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Different bringup}{subsection.4.3}% 32
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Concert}{subsection.4.3}% 33
